@@ -1,0 +1,747 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>Unity集成到iOS本地工程中 | 学不可以已</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="AlfyYan">
+    
+
+    
+    <meta name="description" content="软件环境　　Unity3D: 5.4.0f3　　Xcode: 7.3 准备工作　　为便于管理，可先在桌面上新建文件夹Unity-&amp;gt;iOS，再在该文件夹中新建两个子文件夹iOS和Unity,分别用于存放iOS原生工程和Unity导出的iOS工程。 1.iOS原生工程，简称iOS工程　　用Xcode新建一个Single View Application工程, 名称随意，本文按照视频中命名为Uni">
+<meta name="keywords" content="Unity3D, iOS开发">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Unity集成到iOS本地工程中">
+<meta property="og:url" content="http://yoursite.com/2016/09/07/2016-09-07-Unity集成到iOS本地工程中/index.html">
+<meta property="og:site_name" content="学不可以已">
+<meta property="og:description" content="软件环境　　Unity3D: 5.4.0f3　　Xcode: 7.3 准备工作　　为便于管理，可先在桌面上新建文件夹Unity-&amp;gt;iOS，再在该文件夹中新建两个子文件夹iOS和Unity,分别用于存放iOS原生工程和Unity导出的iOS工程。 1.iOS原生工程，简称iOS工程　　用Xcode新建一个Single View Application工程, 名称随意，本文按照视频中命名为Uni">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://yoursite.com/articleImages/2016-09-07-FolderStructure.jpeg">
+<meta property="og:image" content="http://yoursite.com/articleImages/2016-09-07-Vendor.jpeg">
+<meta property="og:image" content="http://yoursite.com/articleImages/2016-09-07-Frameworks.jpeg">
+<meta property="og:image" content="http://yoursite.com/articleImages/2016-09-07-OtherLinkedFlags.jpeg">
+<meta property="og:image" content="http://yoursite.com/articleImages/2016-09-07-HeaderSearchPath.jpeg">
+<meta property="og:image" content="http://yoursite.com/articleImages/2016-09-07-PrefixHeader.jpeg">
+<meta property="og:image" content="http://yoursite.com/articleImages/2016-09-07-ShowUnity.gif">
+<meta property="og:updated_time" content="2017-03-29T03:06:43.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Unity集成到iOS本地工程中">
+<meta name="twitter:description" content="软件环境　　Unity3D: 5.4.0f3　　Xcode: 7.3 准备工作　　为便于管理，可先在桌面上新建文件夹Unity-&amp;gt;iOS，再在该文件夹中新建两个子文件夹iOS和Unity,分别用于存放iOS原生工程和Unity导出的iOS工程。 1.iOS原生工程，简称iOS工程　　用Xcode新建一个Single View Application工程, 名称随意，本文按照视频中命名为Uni">
+<meta name="twitter:image" content="http://yoursite.com/articleImages/2016-09-07-FolderStructure.jpeg">
+
+    
+    <link rel="alternative" href="/atom.xml" title="学不可以已" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.png" alt="学不可以已" title="学不可以已"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="学不可以已">学不可以已</a></h1>
+				<h2 class="blog-motto">终日而思 不如须臾之所学</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+						<li><a href="/categories">Categories</a></li>
+					
+						<li><a href="/tags">Tags</a></li>
+					
+						<li><a href="/about">About</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="hidden" name="q" value="site:yoursite.com">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2016/09/07/2016-09-07-Unity集成到iOS本地工程中/" title="Unity集成到iOS本地工程中" itemprop="url">Unity集成到iOS本地工程中</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="AlfyYan" target="_blank" itemprop="author">AlfyYan</a>
+		
+  <p class="article-time">
+    <time datetime="2016-09-07T02:33:27.000Z" itemprop="datePublished"> 发表于 2016-09-07</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#软件环境"><span class="toc-number">1.</span> <span class="toc-text">软件环境</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#准备工作"><span class="toc-number">2.</span> <span class="toc-text">准备工作</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-iOS原生工程，简称iOS工程"><span class="toc-number">2.1.</span> <span class="toc-text">1.iOS原生工程，简称iOS工程</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-Unity导出的iOS工程，简称Unity工程"><span class="toc-number">2.2.</span> <span class="toc-text">2. Unity导出的iOS工程，简称Unity工程</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#集成步骤"><span class="toc-number">3.</span> <span class="toc-text">集成步骤</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-iOS工程中新建Vendor-group"><span class="toc-number">3.1.</span> <span class="toc-text">1. iOS工程中新建Vendor group</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-添加Unity的文件至iOS工程中"><span class="toc-number">3.2.</span> <span class="toc-text">2. 添加Unity的文件至iOS工程中</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-添加相关框架"><span class="toc-number">3.3.</span> <span class="toc-text">3. 添加相关框架</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-配置Build-Settings相关选项"><span class="toc-number">3.4.</span> <span class="toc-text">4. 配置Build Settings相关选项</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-pch文件内容替换"><span class="toc-number">3.5.</span> <span class="toc-text">5. pch文件内容替换</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-Supporting-Files下面的main-m"><span class="toc-number">3.6.</span> <span class="toc-text">6. Supporting Files下面的main.m</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#7-UnityAppController-h"><span class="toc-number">3.7.</span> <span class="toc-text">7. UnityAppController.h</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#8-AppDelegate-h和AppDelegate-m"><span class="toc-number">3.8.</span> <span class="toc-text">8. AppDelegate.h和AppDelegate.m</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#9-ViewController-m"><span class="toc-number">3.9.</span> <span class="toc-text">9. ViewController.m</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#References"><span class="toc-number">4.</span> <span class="toc-text">References</span></a></li></ol>
+		
+		</div>
+		
+		<h3 id="软件环境"><a href="#软件环境" class="headerlink" title="软件环境"></a>软件环境</h3><p>　　Unity3D: 5.4.0f3<br>　　Xcode: 7.3</p>
+<h3 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h3><p>　　为便于管理，可先在桌面上新建文件夹<code>Unity-&gt;iOS</code>，再在该文件夹中新建两个子文件夹<code>iOS</code>和<code>Unity</code>,分别用于存放iOS原生工程和Unity导出的iOS工程。<br><img src="/articleImages/2016-09-07-FolderStructure.jpeg" alt=""></p>
+<h4 id="1-iOS原生工程，简称iOS工程"><a href="#1-iOS原生工程，简称iOS工程" class="headerlink" title="1.iOS原生工程，简称iOS工程"></a>1.iOS原生工程，简称iOS工程</h4><p>　　用Xcode新建一个<code>Single View Application</code>工程, 名称随意，本文按照视频中命名为<code>Unity5Native</code>，存放在事先建好的iOS文件夹中。</p>
+<h4 id="2-Unity导出的iOS工程，简称Unity工程"><a href="#2-Unity导出的iOS工程，简称Unity工程" class="headerlink" title="2. Unity导出的iOS工程，简称Unity工程"></a>2. Unity导出的iOS工程，简称Unity工程</h4><p>用Unity导出iOS工程，存放在Unity文件夹中。</p>
+<h3 id="集成步骤"><a href="#集成步骤" class="headerlink" title="集成步骤"></a>集成步骤</h3><h4 id="1-iOS工程中新建Vendor-group"><a href="#1-iOS工程中新建Vendor-group" class="headerlink" title="1. iOS工程中新建Vendor group"></a>1. iOS工程中新建<code>Vendor</code> group</h4><h4 id="2-添加Unity的文件至iOS工程中"><a href="#2-添加Unity的文件至iOS工程中" class="headerlink" title="2. 添加Unity的文件至iOS工程中"></a>2. 添加Unity的文件至iOS工程中</h4><p>　　将Unity工程下的3个文件夹<strong>Classes、Libraries、Data</strong>添加至iOS工程中，添加时<strong>注意</strong>选择<code>Copy items if needed</code>选项，Classes和Libraries文件夹选择<code>Create groups</code>, 而Data文件夹选择<code>Create folder references</code>选项。<br><img src="/articleImages/2016-09-07-Vendor.jpeg" alt="添加完Unity文件夹之后的工程结构" title="工程结构"><br>　　添加完毕以后可以把Unity文件夹中的一些无关文件清理掉，它们会影响编译速度,删除时选择<code>Remove Reference</code>：</p>
+<ul>
+<li><code>Classes</code>-><code>Native</code>文件夹下的<code>*.h</code>文件</li>
+<li><code>Libraries</code>文件夹下的<code>libil2cpp</code>文件夹<h4 id="3-添加相关框架"><a href="#3-添加相关框架" class="headerlink" title="3. 添加相关框架"></a>3. 添加相关框架</h4>　　在iOS工程中新建<code>Frameworks</code> group, 将需要添加的framework放在这个group下，至于需要添加哪些framework可以参见Unity工程的<code>TARGETS</code> -> <code>General</code> -> <code>Linked Frameworks and Libraries</code>，如图所示：<br><img src="/articleImages/2016-09-07-Frameworks.jpeg" alt="需添加的frameworks"></li>
+</ul>
+<h4 id="4-配置Build-Settings相关选项"><a href="#4-配置Build-Settings相关选项" class="headerlink" title="4. 配置Build Settings相关选项"></a>4. 配置<code>Build Settings</code>相关选项</h4><p>（1） <code>Enable Bitcode</code> -> <code>NO</code><br>（2） <code>Other Linker Flags</code><br>添加<code>-weak_framework CoreMotion -weak-lSystem</code><br><img src="/articleImages/2016-09-07-OtherLinkedFlags.jpeg" alt=""><br>（3） <code>Header Search Paths</code><br>添加以下选项：</p>
+<ul>
+<li><code>&quot;$(SRCROOT)&quot;</code></li>
+<li><code>&quot;$(SRCROOT)/Unity5Native/Classes&quot;</code></li>
+<li><code>$(SRCROOT)/Unity5Native/Classes/Native</code></li>
+<li><code>$(SRCROOT)/Unity5Native/Libraries/libil2cpp/include</code></li>
+<li><code>$(SRCROOT)/Unity5Native/Libraries</code></li>
+</ul>
+<p><strong>注意：</strong>根据工程实际路径来配置，<code>$(SRCROOT)</code>是指<code>.xcproj</code>文件所在的路径，<code>Classes</code>和<code>Libraries</code>文件夹是在与<code>Unity5Native.xcproj</code>文件同级的<code>Unity5Native</code>文件夹下面的，所以<code>SRCROOT</code>下面要再添加<code>Unity5Native</code>层级。如果此处路径配置不正确，可能会出现诸如<code>il2cpp-config.h file not found</code>的编译错误。<br><img src="/articleImages/2016-09-07-HeaderSearchPath.jpeg" alt=""></p>
+<p>（4）<code>Library Search Paths</code><br>添加以下选项：</p>
+<ul>
+<li><code>&quot;$(SRCROOT)&quot;</code></li>
+<li><code>&quot;$(SRCROOT)/Unity5Native/Libraries&quot;</code></li>
+</ul>
+<p>（5）<code>Custom Compiler Flags</code> -> <code>Other C Flags</code><br>添加<code>-DINIT_SCRIPTING_BACKEND=1</code><br>（6） <code>C Language Dialect</code>选择<code>C99 [-std=c99]</code><br>（7） 新建<code>pch</code>文件：<code>PrefixHeader.pch</code><br>（8） 设置<code>Prefix Header</code>的路径<br>根据pct文件所在路径实际设置，由于我是放在<code>Supporting File</code>group组下面的，实际在与<code>Unity5Native.xcproj</code>文件同目录下的<code>Unity5Native</code>文件夹下。<br>（9）<code>Precompile Prefix Header</code>选择<code>YES</code><br>（10） <code>C++ Language Dialect</code>选择<code>C++11 [-std=c++11]</code><br>（11）<code>Enable C++ Runtime Types</code>选择<code>NO</code><br>（12） <code>Warnings-Objective C</code>-><code>Overriding Deprecated Objective-C Methods</code>选择<code>YES</code><br>（13） <code>Warnings-Objective C</code>-><code>Unintentional Root Classes</code>选择<code>YES</code><br>（14） <code>User-Defined</code><br>添加如下选项：</p>
+<ul>
+<li><code>GCC_THUMB_SUPPORT</code>-><code>NO</code></li>
+<li><code>GCC_USE_INDIRECT_FUNCTION_CALLS</code>-><code>NO</code></li>
+<li><code>UNITY_RUNTIME_VERSION</code>-><code>5.4.0f3</code></li>
+<li><code>UNITY_SCRIPTING_BACKEND</code>-><code>il2cpp</code></li>
+</ul>
+<h4 id="5-pch文件内容替换"><a href="#5-pch文件内容替换" class="headerlink" title="5. pch文件内容替换"></a>5. <code>pch</code>文件内容替换</h4><p>将<code>Classes</code>文件夹下的<code>Prefix.pch</code>文件中的内容全部复制粘贴到<code>PrefixHeader.pch</code>文件的</p>
+<pre><code>#define PrefixHeader_pch
+#endif /* PrefixHeader_pch */
+</code></pre><p>之间，并且引入<code>UnityAppController.h</code>文件如图所示：<br><img src="/articleImages/2016-09-07-PrefixHeader.jpeg" alt=""></p>
+<h4 id="6-Supporting-Files下面的main-m"><a href="#6-Supporting-Files下面的main-m" class="headerlink" title="6. Supporting Files下面的main.m"></a>6. <code>Supporting Files</code>下面的<code>main.m</code></h4><ul>
+<li>重命名成<code>main.mm</code></li>
+<li><p>将<code>Classes</code>文件夹下的<code>main.mm</code>文件中的全部内容复制到<code>Supporting Files</code>文件夹下的<code>main.mm</code>文件中，并进行修改：</p>
+<p>  //const char* AppControllerClassName = @”UnityAppController”;<br>  const char* AppControllerClassName = “AppDelegate”;</p>
+</li>
+<li><p><code>Build Phases</code>中移除<code>Classes下</code>的<code>main.mm</code></p>
+</li>
+</ul>
+<h4 id="7-UnityAppController-h"><a href="#7-UnityAppController-h" class="headerlink" title="7. UnityAppController.h"></a>7. <code>UnityAppController.h</code></h4><p>作如下修改：<br>    //inline UnityAppController<em>    GetAppController()<br>    //{<br>    //  return (UnityAppController</em>)[UIApplication sharedApplication].delegate;<br>    //}</p>
+<pre><code>#import &quot;AppDelegate.h&quot;
+
+inline UnityAppController*  GetAppController()
+{
+    AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+
+    return delegate.unityController;
+}
+</code></pre><h4 id="8-AppDelegate-h和AppDelegate-m"><a href="#8-AppDelegate-h和AppDelegate-m" class="headerlink" title="8. AppDelegate.h和AppDelegate.m"></a>8. <code>AppDelegate.h</code>和<code>AppDelegate.m</code></h4><p><code>AppDelegate.h</code>文件作如下修改：</p>
+<pre><code>#import &lt;UIKit/UIKit.h&gt;
+
+@interface AppDelegate : UIResponder &lt;UIApplicationDelegate&gt;
+
+@property (strong, nonatomic) UIWindow *window;
+@property (strong, nonatomic) UIWindow *unityWindow;
+
+@property (nonatomic, strong) UnityAppController *unityController;
+
+- (void)showUnityWindow;
+- (void)hideUnityWindow;
+
+@end
+</code></pre><p><code>AppDelegate.m</code>文件作如下修改：</p>
+<pre><code>#import &quot;AppDelegate.h&quot;
+
+@interface AppDelegate ()
+
+@end
+
+@implementation AppDelegate
+
+- (UIWindow *)unityWindow {
+    return UnityGetMainWindow();
+}
+
+- (void)showUnityWindow {
+    [self.unityWindow makeKeyAndVisible];
+}
+
+- (void)hideUnityWindow {
+    [self.window makeKeyAndVisible];
+}
+
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    // Override point for customization after application launch.
+
+    self.window.backgroundColor = [UIColor redColor];
+
+    self.unityController = [[UnityAppController alloc] init];
+
+    [self.unityController application:application didFinishLaunchingWithOptions:launchOptions];
+
+    return YES;
+}
+
+- (void)applicationWillResignActive:(UIApplication *)application {
+    // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
+    // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
+
+    [self.unityController applicationWillResignActive:application];
+}
+
+- (void)applicationDidEnterBackground:(UIApplication *)application {
+    // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
+    // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+
+    [self.unityController applicationDidEnterBackground:application];
+}
+
+- (void)applicationWillEnterForeground:(UIApplication *)application {
+    // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
+
+    [self.unityController applicationWillEnterForeground:application];
+}
+
+- (void)applicationDidBecomeActive:(UIApplication *)application {
+    // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+
+    [self.unityController applicationDidBecomeActive:application];
+}
+
+- (void)applicationWillTerminate:(UIApplication *)application {
+    // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+
+    [self.unityController applicationWillTerminate:application];
+}
+
+@end
+</code></pre><h4 id="9-ViewController-m"><a href="#9-ViewController-m" class="headerlink" title="9. ViewController.m"></a>9. <code>ViewController.m</code></h4><p>作如下修改：</p>
+<pre><code>#import &quot;ViewController.h&quot;
+#import &quot;AppDelegate.h&quot;
+
+@interface ViewController ()
+
+@property (nonatomic, strong) UIButton *showUnityButton;
+
+@end
+
+@implementation ViewController
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    // Do any additional setup after loading the view, typically from a nib.
+
+    self.view.backgroundColor = [UIColor blueColor];
+
+    self.showUnityButton = [UIButton buttonWithType:UIButtonTypeSystem];
+    [self.showUnityButton setTitle:@&quot;Show Unity&quot; forState:UIControlStateNormal];
+    self.showUnityButton.frame = CGRectMake(0, 0, 100, 44);
+    self.showUnityButton.center = self.view.center;
+    [self.showUnityButton addTarget:self action:@selector(showUnityView:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:self.showUnityButton];
+}
+
+- (void)showUnityView:(id)sender {
+    [(AppDelegate *)[UIApplication sharedApplication].delegate showUnityWindow];
+}
+
+@end
+</code></pre><p>最终结果如下图所示：<br><img src="/articleImages/2016-09-07-ShowUnity.gif" alt=""></p>
+<h3 id="References"><a href="#References" class="headerlink" title="References"></a>References</h3><ol>
+<li><a href="https://the-nerd.be/2015/11/13/integrate-unity-5-in-a-native-ios-app-with-xcode-7/" target="_blank" rel="noopener">Integrate Unity 5 in a native iOS app</a></li>
+<li><a href="http://www.jianshu.com/p/715adc38e451/comments/1229406" target="_blank" rel="noopener">Unity项目整合嵌入iOS主工程</a></li>
+</ol>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/iOS开发/">iOS开发</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/Unity3D-iOS开发/">Unity3D, iOS开发</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="http://yoursite.com/2016/09/07/2016-09-07-Unity集成到iOS本地工程中/" data-title="Unity集成到iOS本地工程中 | 学不可以已" data-tsina="" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2016/09/14/2016-09-14-CocoaPods安装-升级-降级-卸载/" title="CocoaPods安装|升级|降级|卸载">
+  <strong>上一篇：</strong><br/>
+  <span>
+  CocoaPods安装|升级|降级|卸载</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2016/06/22/2016-06-22-你陪我长大，却不给我机会陪你变老/"  title="你陪我长大，却不给我机会陪你变老">
+ <strong>下一篇：</strong><br/> 
+ <span>你陪我长大，却不给我机会陪你变老
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+<section id="comments" class="comment">
+	<div class="ds-thread" data-thread-key="2016/09/07/2016-09-07-Unity集成到iOS本地工程中/" data-title="Unity集成到iOS本地工程中" data-url="http://yoursite.com/2016/09/07/2016-09-07-Unity集成到iOS本地工程中/"></div>
+</section>
+
+
+
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#软件环境"><span class="toc-number">1.</span> <span class="toc-text">软件环境</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#准备工作"><span class="toc-number">2.</span> <span class="toc-text">准备工作</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-iOS原生工程，简称iOS工程"><span class="toc-number">2.1.</span> <span class="toc-text">1.iOS原生工程，简称iOS工程</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-Unity导出的iOS工程，简称Unity工程"><span class="toc-number">2.2.</span> <span class="toc-text">2. Unity导出的iOS工程，简称Unity工程</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#集成步骤"><span class="toc-number">3.</span> <span class="toc-text">集成步骤</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-iOS工程中新建Vendor-group"><span class="toc-number">3.1.</span> <span class="toc-text">1. iOS工程中新建Vendor group</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-添加Unity的文件至iOS工程中"><span class="toc-number">3.2.</span> <span class="toc-text">2. 添加Unity的文件至iOS工程中</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-添加相关框架"><span class="toc-number">3.3.</span> <span class="toc-text">3. 添加相关框架</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-配置Build-Settings相关选项"><span class="toc-number">3.4.</span> <span class="toc-text">4. 配置Build Settings相关选项</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-pch文件内容替换"><span class="toc-number">3.5.</span> <span class="toc-text">5. pch文件内容替换</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-Supporting-Files下面的main-m"><span class="toc-number">3.6.</span> <span class="toc-text">6. Supporting Files下面的main.m</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#7-UnityAppController-h"><span class="toc-number">3.7.</span> <span class="toc-text">7. UnityAppController.h</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#8-AppDelegate-h和AppDelegate-m"><span class="toc-number">3.8.</span> <span class="toc-text">8. AppDelegate.h和AppDelegate.m</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#9-ViewController-m"><span class="toc-number">3.9.</span> <span class="toc-text">9. ViewController.m</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#References"><span class="toc-number">4.</span> <span class="toc-text">References</span></a></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  
+<div class="github-card">
+<p class="asidetitle">Github 名片</p>
+<div class="github-card" data-github="AlfyYan" data-theme="medium"></div>
+<script type="text/javascript" src="//cdn.jsdelivr.net/github-cards/latest/widget.js" ></script>
+</div>
+
+
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">分类</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/iOS开发/" title="iOS开发">iOS开发<sup>4</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/博客/" title="博客">博客<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/工具软件/" title="工具软件">工具软件<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/生活/" title="生活">生活<sup>1</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">标签</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/CocoaPods/" title="CocoaPods">CocoaPods<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Hexo/" title="Hexo">Hexo<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/StackOverflow/" title="StackOverflow">StackOverflow<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Mac/" title="Mac">Mac<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Unity3D-iOS开发/" title="Unity3D, iOS开发">Unity3D, iOS开发<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/生活/" title="生活">生活<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">友情链接</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="http://www.raywenderlich.com" target="_blank" title="Raywenderlich">Raywenderlich</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://www.appcoda.com" target="_blank" title="AppCoda">AppCoda</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://objccn.io/" target="_blank" title="Objc中国">Objc中国</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="https://blog.ibireme.com/" target="_blank" title="一只魔法师的工坊">一只魔法师的工坊</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="https://github.com/ipader/SwiftGuide" target="_blank" title="SwiftGuide-Github">SwiftGuide-Github</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="https://www.hackingwithswift.com/" target="_blank" title="HackingSwift">HackingSwift</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://www.cocoachina.com" target="_blank" title="CocoaChina">CocoaChina</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://code4app.com" target="_blank" title="Code4App">Code4App</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="https://www.cocoacontrols.com/" target="_blank" title="CocoaControls">CocoaControls</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> 平生知心者，屈指能几人？ <br/>
+			以文会友，以友辅仁</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		
+		<a href="https://github.com/AlfyYan" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		<a href="http://stackoverflow.com/users/4799498" target="_blank" class="icon-stack-overflow" title="stackoverflow"></a>
+		
+		
+		
+		
+		
+		
+		
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2018 
+		
+		<a href="/about" target="_blank" title="AlfyYan">AlfyYan</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"qingqinghebiancao"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script> 
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?e6d1f421bbc9962127a50488f9ed37d1";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>

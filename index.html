@@ -1,0 +1,1198 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>学不可以已</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="AlfyYan">
+    
+
+    
+    <meta name="description" content="人生到处知何似 应似飞鸿踏雪泥">
+<meta property="og:type" content="website">
+<meta property="og:title" content="学不可以已">
+<meta property="og:url" content="http://yoursite.com/index.html">
+<meta property="og:site_name" content="学不可以已">
+<meta property="og:description" content="人生到处知何似 应似飞鸿踏雪泥">
+<meta property="og:locale" content="zh-CN">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="学不可以已">
+<meta name="twitter:description" content="人生到处知何似 应似飞鸿踏雪泥">
+
+    
+    <link rel="alternative" href="/atom.xml" title="学不可以已" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.png" alt="学不可以已" title="学不可以已"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="学不可以已">学不可以已</a></h1>
+				<h2 class="blog-motto">终日而思 不如须臾之所学</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+						<li><a href="/categories">Categories</a></li>
+					
+						<li><a href="/tags">Tags</a></li>
+					
+						<li><a href="/about">About</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="hidden" name="q" value="site:yoursite.com">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main">
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2016/09/14/2016-09-14-CocoaPods安装-升级-降级-卸载/" title="CocoaPods安装|升级|降级|卸载" itemprop="url">CocoaPods安装|升级|降级|卸载</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="AlfyYan" target="_blank" itemprop="author">AlfyYan</a>
+		
+  <p class="article-time">
+    <time datetime="2016-09-14T07:19:46.000Z" itemprop="datePublished"> 发表于 2016-09-14</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <p>　　平时iOS开发中经常会碰到某个第三方库由于spec文件配置的原因暂不支持某版本（一般是新版本）的CocoaPods，强行使用则<code>pod install</code>会出错，所以经常可能会需要降级、升级甚至卸载CocoaPods的某版本，因此本文对这几类操作进行了总结。</p>
+<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><blockquote>
+<p>Cocoapods是iOS项目中用来管理第三方库的工具，由于它是用Ruby编写的，因此要运行它首先要安装Ruby的运行环境。</p>
+</blockquote>
+  <figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">/<span class="regexp">/ 国内如果未翻墙，需要切换源</span></span><br><span class="line"><span class="regexp">/</span><span class="regexp">/ 1. 查看当前源</span></span><br><span class="line"><span class="regexp">gem sources -l</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">/</span><span class="regexp">/ 2. 移除国外的ruby源</span></span><br><span class="line"><span class="regexp">gem sources --remove https:/</span><span class="regexp">/rubygems.org/</span></span><br><span class="line"></span><br><span class="line">/<span class="regexp">/ 3. 使用淘宝镜像访问</span></span><br><span class="line"><span class="regexp">gem sources -a https:/</span><span class="regexp">/ruby.taobao.org/</span></span><br><span class="line"></span><br><span class="line">/<span class="regexp">/ 4. 安装最新版本的pod</span></span><br><span class="line"><span class="regexp">sudo gem install cocoapods</span></span><br><span class="line"><span class="regexp">/</span><span class="regexp">/ 如果要安装指定版本的pod，则执行如下命令</span></span><br><span class="line"><span class="regexp">sudo gem install cocoapods --version 0.39.0</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">/</span><span class="regexp">/ 5. 初始化</span></span><br><span class="line"><span class="regexp">pod setup</span></span><br></pre></td></tr></table></figure>
+<p>PS: 可以在<a href="https://github.com/CocoaPods/CocoaPods-app/tags" target="_blank" rel="noopener">CocoaPods发布版本</a>处查看可安装版本。</p>
+<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><ol>
+<li><p>使用指定pod版本安装第三方库<br>多版本pod并存时，有时会碰到某些第三方库暂不支持更新版本的pod安装，这时候可以指定pod的版本安装。</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pod _<span class="number">0</span>.<span class="number">39.0_</span> install		/<span class="regexp">/ 中间的版本号0.39.0可替换成自己的pod版本</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="卸载"><a href="#卸载" class="headerlink" title="卸载"></a>卸载</h3><ol>
+<li><p>确认当前CocoaPods版本</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pod --version</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>列出当前所有安装的CocoaPods版本</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gem list pod</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>卸载（指定版本or当前使用版本）</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo gem uninstall cocoapods				/<span class="regexp">/ 卸载当前版本</span></span><br><span class="line"><span class="regexp">sudo gem uninstall cocoapods -v 0.39.0		/</span><span class="regexp">/卸载指定版本</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="升级"><a href="#升级" class="headerlink" title="升级"></a>升级</h3><p>与安装过程一样，执行如下命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo gem install cocoapods</span><br></pre></td></tr></table></figure>
+<h3 id="降级"><a href="#降级" class="headerlink" title="降级"></a>降级</h3><ol>
+<li><p>卸载原有版本</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo gem uninstall cocoapods</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>重新安装低版本,如0.25.0</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo gem install cocoapods -v 0.25.0</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="常用命令总结"><a href="#常用命令总结" class="headerlink" title="常用命令总结"></a>常用命令总结</h3><figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">/<span class="regexp">/ 列出ruby当前可安装版本</span></span><br><span class="line"><span class="regexp">rvm list known</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">/</span><span class="regexp">/ 列出当前已安装的ruby版本信息</span></span><br><span class="line"><span class="regexp">rvm list</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">/</span><span class="regexp">/ 安装指定ruby版本</span></span><br><span class="line"><span class="regexp">rvm install 2.3.0</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">/</span><span class="regexp">/ 设置ruby默认版本</span></span><br><span class="line"><span class="regexp">rvm use 2.3.0 --default</span></span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><ol>
+<li><a href="http://www.jianshu.com/p/934849a5232a" target="_blank" rel="noopener">Rvm、Ruby及Cocoapods安装</a></li>
+<li><a href="http://iosfen.com/14582684911521.html" target="_blank" rel="noopener">多个Ruby、多个CocoaPods版本共存问题</a></li>
+<li><a href="http://www.jianshu.com/p/43a268ba8f47" target="_blank" rel="noopener">执行pod setup很慢很慢解决方案</a></li>
+<li><a href="http://blog.devtang.com/2014/05/25/use-cocoapod-to-manage-ios-lib-dependency/" target="_blank" rel="noopener">用CocoaPods做iOS程序的依赖管理</a></li>
+<li><a href="http://www.jianshu.com/p/2ef8a38416c4" target="_blank" rel="noopener">2016最新CocoaPods安装和错误解决</a></li>
+<li><a href="http://stackoverflow.com/questions/20487849/how-to-downgrade-or-install-an-older-version-of-cocoapods" target="_blank" rel="noopener">How to downgrade or install an older version of Cocoapods</a></li>
+</ol>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/iOS开发/">iOS开发</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/CocoaPods/">CocoaPods</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/2016/09/14/2016-09-14-CocoaPods安装-升级-降级-卸载/#comments" class="ds-thread-count comments-count-link" data-thread-key="2016/09/14/2016-09-14-CocoaPods安装-升级-降级-卸载/" data-count-type="comments">&nbsp;</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2016/09/07/2016-09-07-Unity集成到iOS本地工程中/" title="Unity集成到iOS本地工程中" itemprop="url">Unity集成到iOS本地工程中</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="AlfyYan" target="_blank" itemprop="author">AlfyYan</a>
+		
+  <p class="article-time">
+    <time datetime="2016-09-07T02:33:27.000Z" itemprop="datePublished"> 发表于 2016-09-07</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h3 id="软件环境"><a href="#软件环境" class="headerlink" title="软件环境"></a>软件环境</h3><p>　　Unity3D: 5.4.0f3<br>　　Xcode: 7.3</p>
+<h3 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h3><p>　　为便于管理，可先在桌面上新建文件夹<code>Unity-&gt;iOS</code>，再在该文件夹中新建两个子文件夹<code>iOS</code>和<code>Unity</code>,分别用于存放iOS原生工程和Unity导出的iOS工程。<br><img src="/articleImages/2016-09-07-FolderStructure.jpeg" alt=""></p>
+<h4 id="1-iOS原生工程，简称iOS工程"><a href="#1-iOS原生工程，简称iOS工程" class="headerlink" title="1.iOS原生工程，简称iOS工程"></a>1.iOS原生工程，简称iOS工程</h4><p>　　用Xcode新建一个<code>Single View Application</code>工程, 名称随意，本文按照视频中命名为<code>Unity5Native</code>，存放在事先建好的iOS文件夹中。</p>
+<h4 id="2-Unity导出的iOS工程，简称Unity工程"><a href="#2-Unity导出的iOS工程，简称Unity工程" class="headerlink" title="2. Unity导出的iOS工程，简称Unity工程"></a>2. Unity导出的iOS工程，简称Unity工程</h4><p>用Unity导出iOS工程，存放在Unity文件夹中。</p>
+<h3 id="集成步骤"><a href="#集成步骤" class="headerlink" title="集成步骤"></a>集成步骤</h3><h4 id="1-iOS工程中新建Vendor-group"><a href="#1-iOS工程中新建Vendor-group" class="headerlink" title="1. iOS工程中新建Vendor group"></a>1. iOS工程中新建<code>Vendor</code> group</h4><h4 id="2-添加Unity的文件至iOS工程中"><a href="#2-添加Unity的文件至iOS工程中" class="headerlink" title="2. 添加Unity的文件至iOS工程中"></a>2. 添加Unity的文件至iOS工程中</h4><p>　　将Unity工程下的3个文件夹<strong>Classes、Libraries、Data</strong>添加至iOS工程中，添加时<strong>注意</strong>选择<code>Copy items if needed</code>选项，Classes和Libraries文件夹选择<code>Create groups</code>, 而Data文件夹选择<code>Create folder references</code>选项。<br><img src="/articleImages/2016-09-07-Vendor.jpeg" alt="添加完Unity文件夹之后的工程结构" title="工程结构"><br>　　添加完毕以后可以把Unity文件夹中的一些无关文件清理掉，它们会影响编译速度,删除时选择<code>Remove Reference</code>：</p>
+<ul>
+<li><code>Classes</code>-><code>Native</code>文件夹下的<code>*.h</code>文件</li>
+<li><code>Libraries</code>文件夹下的<code>libil2cpp</code>文件夹<h4 id="3-添加相关框架"><a href="#3-添加相关框架" class="headerlink" title="3. 添加相关框架"></a>3. 添加相关框架</h4>　　在iOS工程中新建<code>Frameworks</code> group, 将需要添加的framework放在这个group下，至于需要添加哪些framework可以参见Unity工程的<code>TARGETS</code> -> <code>General</code> -> <code>Linked Frameworks and Libraries</code>，如图所示：<br><img src="/articleImages/2016-09-07-Frameworks.jpeg" alt="需添加的frameworks"></li>
+</ul>
+<h4 id="4-配置Build-Settings相关选项"><a href="#4-配置Build-Settings相关选项" class="headerlink" title="4. 配置Build Settings相关选项"></a>4. 配置<code>Build Settings</code>相关选项</h4><p>（1） <code>Enable Bitcode</code> -> <code>NO</code><br>（2） <code>Other Linker Flags</code><br>添加<code>-weak_framework CoreMotion -weak-lSystem</code><br><img src="/articleImages/2016-09-07-OtherLinkedFlags.jpeg" alt=""><br>（3） <code>Header Search Paths</code><br>添加以下选项：</p>
+<ul>
+<li><code>&quot;$(SRCROOT)&quot;</code></li>
+<li><code>&quot;$(SRCROOT)/Unity5Native/Classes&quot;</code></li>
+<li><code>$(SRCROOT)/Unity5Native/Classes/Native</code></li>
+<li><code>$(SRCROOT)/Unity5Native/Libraries/libil2cpp/include</code></li>
+<li><code>$(SRCROOT)/Unity5Native/Libraries</code></li>
+</ul>
+<p><strong>注意：</strong>根据工程实际路径来配置，<code>$(SRCROOT)</code>是指<code>.xcproj</code>文件所在的路径，<code>Classes</code>和<code>Libraries</code>文件夹是在与<code>Unity5Native.xcproj</code>文件同级的<code>Unity5Native</code>文件夹下面的，所以<code>SRCROOT</code>下面要再添加<code>Unity5Native</code>层级。如果此处路径配置不正确，可能会出现诸如<code>il2cpp-config.h file not found</code>的编译错误。<br><img src="/articleImages/2016-09-07-HeaderSearchPath.jpeg" alt=""></p>
+<p>（4）<code>Library Search Paths</code><br>添加以下选项：</p>
+<ul>
+<li><code>&quot;$(SRCROOT)&quot;</code></li>
+<li><code>&quot;$(SRCROOT)/Unity5Native/Libraries&quot;</code></li>
+</ul>
+<p>（5）<code>Custom Compiler Flags</code> -> <code>Other C Flags</code><br>添加<code>-DINIT_SCRIPTING_BACKEND=1</code><br>（6） <code>C Language Dialect</code>选择<code>C99 [-std=c99]</code><br>（7） 新建<code>pch</code>文件：<code>PrefixHeader.pch</code><br>（8） 设置<code>Prefix Header</code>的路径<br>根据pct文件所在路径实际设置，由于我是放在<code>Supporting File</code>group组下面的，实际在与<code>Unity5Native.xcproj</code>文件同目录下的<code>Unity5Native</code>文件夹下。<br>（9）<code>Precompile Prefix Header</code>选择<code>YES</code><br>（10） <code>C++ Language Dialect</code>选择<code>C++11 [-std=c++11]</code><br>（11）<code>Enable C++ Runtime Types</code>选择<code>NO</code><br>（12） <code>Warnings-Objective C</code>-><code>Overriding Deprecated Objective-C Methods</code>选择<code>YES</code><br>（13） <code>Warnings-Objective C</code>-><code>Unintentional Root Classes</code>选择<code>YES</code><br>（14） <code>User-Defined</code><br>添加如下选项：</p>
+<ul>
+<li><code>GCC_THUMB_SUPPORT</code>-><code>NO</code></li>
+<li><code>GCC_USE_INDIRECT_FUNCTION_CALLS</code>-><code>NO</code></li>
+<li><code>UNITY_RUNTIME_VERSION</code>-><code>5.4.0f3</code></li>
+<li><code>UNITY_SCRIPTING_BACKEND</code>-><code>il2cpp</code></li>
+</ul>
+<h4 id="5-pch文件内容替换"><a href="#5-pch文件内容替换" class="headerlink" title="5. pch文件内容替换"></a>5. <code>pch</code>文件内容替换</h4><p>将<code>Classes</code>文件夹下的<code>Prefix.pch</code>文件中的内容全部复制粘贴到<code>PrefixHeader.pch</code>文件的</p>
+<pre><code>#define PrefixHeader_pch
+#endif /* PrefixHeader_pch */
+</code></pre><p>之间，并且引入<code>UnityAppController.h</code>文件如图所示：<br><img src="/articleImages/2016-09-07-PrefixHeader.jpeg" alt=""></p>
+<h4 id="6-Supporting-Files下面的main-m"><a href="#6-Supporting-Files下面的main-m" class="headerlink" title="6. Supporting Files下面的main.m"></a>6. <code>Supporting Files</code>下面的<code>main.m</code></h4><ul>
+<li>重命名成<code>main.mm</code></li>
+<li><p>将<code>Classes</code>文件夹下的<code>main.mm</code>文件中的全部内容复制到<code>Supporting Files</code>文件夹下的<code>main.mm</code>文件中，并进行修改：</p>
+<p>  //const char* AppControllerClassName = @”UnityAppController”;<br>  const char* AppControllerClassName = “AppDelegate”;</p>
+</li>
+<li><p><code>Build Phases</code>中移除<code>Classes下</code>的<code>main.mm</code></p>
+</li>
+</ul>
+<h4 id="7-UnityAppController-h"><a href="#7-UnityAppController-h" class="headerlink" title="7. UnityAppController.h"></a>7. <code>UnityAppController.h</code></h4><p>作如下修改：<br>    //inline UnityAppController<em>    GetAppController()<br>    //{<br>    //  return (UnityAppController</em>)[UIApplication sharedApplication].delegate;<br>    //}</p>
+<pre><code>#import &quot;AppDelegate.h&quot;
+
+inline UnityAppController*  GetAppController()
+{
+    AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+
+    return delegate.unityController;
+}
+</code></pre><h4 id="8-AppDelegate-h和AppDelegate-m"><a href="#8-AppDelegate-h和AppDelegate-m" class="headerlink" title="8. AppDelegate.h和AppDelegate.m"></a>8. <code>AppDelegate.h</code>和<code>AppDelegate.m</code></h4><p><code>AppDelegate.h</code>文件作如下修改：</p>
+<pre><code>#import &lt;UIKit/UIKit.h&gt;
+
+@interface AppDelegate : UIResponder &lt;UIApplicationDelegate&gt;
+
+@property (strong, nonatomic) UIWindow *window;
+@property (strong, nonatomic) UIWindow *unityWindow;
+
+@property (nonatomic, strong) UnityAppController *unityController;
+
+- (void)showUnityWindow;
+- (void)hideUnityWindow;
+
+@end
+</code></pre><p><code>AppDelegate.m</code>文件作如下修改：</p>
+<pre><code>#import &quot;AppDelegate.h&quot;
+
+@interface AppDelegate ()
+
+@end
+
+@implementation AppDelegate
+
+- (UIWindow *)unityWindow {
+    return UnityGetMainWindow();
+}
+
+- (void)showUnityWindow {
+    [self.unityWindow makeKeyAndVisible];
+}
+
+- (void)hideUnityWindow {
+    [self.window makeKeyAndVisible];
+}
+
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    // Override point for customization after application launch.
+
+    self.window.backgroundColor = [UIColor redColor];
+
+    self.unityController = [[UnityAppController alloc] init];
+
+    [self.unityController application:application didFinishLaunchingWithOptions:launchOptions];
+
+    return YES;
+}
+
+- (void)applicationWillResignActive:(UIApplication *)application {
+    // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
+    // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
+
+    [self.unityController applicationWillResignActive:application];
+}
+
+- (void)applicationDidEnterBackground:(UIApplication *)application {
+    // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
+    // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+
+    [self.unityController applicationDidEnterBackground:application];
+}
+
+- (void)applicationWillEnterForeground:(UIApplication *)application {
+    // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
+
+    [self.unityController applicationWillEnterForeground:application];
+}
+
+- (void)applicationDidBecomeActive:(UIApplication *)application {
+    // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+
+    [self.unityController applicationDidBecomeActive:application];
+}
+
+- (void)applicationWillTerminate:(UIApplication *)application {
+    // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+
+    [self.unityController applicationWillTerminate:application];
+}
+
+@end
+</code></pre><h4 id="9-ViewController-m"><a href="#9-ViewController-m" class="headerlink" title="9. ViewController.m"></a>9. <code>ViewController.m</code></h4><p>作如下修改：</p>
+<pre><code>#import &quot;ViewController.h&quot;
+#import &quot;AppDelegate.h&quot;
+
+@interface ViewController ()
+
+@property (nonatomic, strong) UIButton *showUnityButton;
+
+@end
+
+@implementation ViewController
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    // Do any additional setup after loading the view, typically from a nib.
+
+    self.view.backgroundColor = [UIColor blueColor];
+
+    self.showUnityButton = [UIButton buttonWithType:UIButtonTypeSystem];
+    [self.showUnityButton setTitle:@&quot;Show Unity&quot; forState:UIControlStateNormal];
+    self.showUnityButton.frame = CGRectMake(0, 0, 100, 44);
+    self.showUnityButton.center = self.view.center;
+    [self.showUnityButton addTarget:self action:@selector(showUnityView:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:self.showUnityButton];
+}
+
+- (void)showUnityView:(id)sender {
+    [(AppDelegate *)[UIApplication sharedApplication].delegate showUnityWindow];
+}
+
+@end
+</code></pre><p>最终结果如下图所示：<br><img src="/articleImages/2016-09-07-ShowUnity.gif" alt=""></p>
+<h3 id="References"><a href="#References" class="headerlink" title="References"></a>References</h3><ol>
+<li><a href="https://the-nerd.be/2015/11/13/integrate-unity-5-in-a-native-ios-app-with-xcode-7/" target="_blank" rel="noopener">Integrate Unity 5 in a native iOS app</a></li>
+<li><a href="http://www.jianshu.com/p/715adc38e451/comments/1229406" target="_blank" rel="noopener">Unity项目整合嵌入iOS主工程</a></li>
+</ol>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/iOS开发/">iOS开发</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/Unity3D-iOS开发/">Unity3D, iOS开发</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/2016/09/07/2016-09-07-Unity集成到iOS本地工程中/#comments" class="ds-thread-count comments-count-link" data-thread-key="2016/09/07/2016-09-07-Unity集成到iOS本地工程中/" data-count-type="comments">&nbsp;</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2016/06/22/2016-06-22-你陪我长大，却不给我机会陪你变老/" title="你陪我长大，却不给我机会陪你变老" itemprop="url">你陪我长大，却不给我机会陪你变老</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="AlfyYan" target="_blank" itemprop="author">AlfyYan</a>
+		
+  <p class="article-time">
+    <time datetime="2016-06-22T05:52:20.000Z" itemprop="datePublished"> 发表于 2016-06-22</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <p>　　子欲养而亲不待，这是人生最大的悲哀。</p>
+<p>　　六月的第三个星期日，迎来了父亲节，然而我很怕。今天终于在看到公众号推送的一篇文章——《你陪我长大，我陪你变老》，还是忍不住眼红了。那一瞬间，我内心浮现的是：你陪我长大，却不给我机会陪你变老。</p>
+<p>　　犹记得在大学懵懂之时，刚刚接触网络，很有兴趣回答别人的问题，第一个回答并获得采纳的问题我用了“树欲静而风不止，子欲养而亲不待”这种人生憾事来说服那个跟母亲怄气的女生主动向母亲低头认错，却不想竟被自己遭遇了。</p>
+<p>　　距父亲去世已经两周多了，我至今仍觉得像是一场梦，多么希望从梦中醒来，父亲还能够在耳边絮叨妈妈菜炒多了，盐也放多了，还能够板起脸来生我们的气，那个倔强的小老头啊……</p>
+<p>　　爸爸去了以后，我最近总是被内心的愧疚缠绕。想起自大学以后，每次回家所待时间短暂，在这短暂的时间里竟也没有好好地陪伴过他和妈妈：不曾陪他们一起看电视，只因他们喜欢看的类型我已不再喜欢；不曾专心坐下听他们絮叨家长里短，他们只是想和孩子们聊聊而已，随着我们长大，他们再不是我们小时候眼中的英雄，知道的远没有我们多，我们所感兴趣的话题他们不懂；不曾为他们做过什么特别的事，可能唯一称得上孝顺的算是每次回家一定要给妈妈剪一次脚趾甲吧，我却不曾为爸爸做过一次。“父母在，不远游，游必有方”，有方又怎样？</p>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/生活/">生活</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/生活/">生活</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/2016/06/22/2016-06-22-你陪我长大，却不给我机会陪你变老/#comments" class="ds-thread-count comments-count-link" data-thread-key="2016/06/22/2016-06-22-你陪我长大，却不给我机会陪你变老/" data-count-type="comments">&nbsp;</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2015/09/10/2015-09-10-Mac下的常用app-持续更新/" title="Mac下的常用app(持续更新...)" itemprop="url">Mac下的常用app(持续更新...)</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="AlfyYan" target="_blank" itemprop="author">AlfyYan</a>
+		
+  <p class="article-time">
+    <time datetime="2015-09-10T12:43:59.000Z" itemprop="datePublished"> 发表于 2015-09-10</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h3 id="终端Terminal"><a href="#终端Terminal" class="headerlink" title="终端Terminal"></a><strong>终端Terminal</strong></h3><h4 id="包管理器——Homebrew"><a href="#包管理器——Homebrew" class="headerlink" title="包管理器——Homebrew"></a><a href="https://github.com/Homebrew/homebrew" target="_blank" rel="noopener">包管理器——Homebrew</a></h4><h4 id="管理zsh的配置——oh-my-zsh"><a href="#管理zsh的配置——oh-my-zsh" class="headerlink" title="管理zsh的配置——oh my zsh"></a><a href="https://github.com/robbyrussell/oh-my-zsh" target="_blank" rel="noopener">管理zsh的配置——oh my zsh</a></h4><h4 id="快速浏览文件——autojump"><a href="#快速浏览文件——autojump" class="headerlink" title="快速浏览文件——autojump"></a><a href="https://github.com/wting/autojump" target="_blank" rel="noopener">快速浏览文件——autojump</a></h4><p>　autojump可通过terminal快速访问文件系统，由于它的工作方式是在命令行中维护一个你最常使用的文件目录的数据库，因此<strong>它可以跳转的文件/目录一定是之前在命令行中访问过的</strong>。<br>　用<code>brew install autojump</code>安装之后，别忘了在<code>.zshrc</code>文件中添加下面的配置：</p>
+<pre><code>[[ -s $(brew --prefix)/etc/profile.d/autojump.sh ]] &amp;&amp; . $(brew --prefix)/etc/profile.d/autojump.sh
+</code></pre><p>否则使用会报<code>command not found: j</code>的错误。</p>
+<h3 id="开发工具"><a href="#开发工具" class="headerlink" title="开发工具"></a><strong>开发工具</strong></h3><h4 id="iOS开发——Xcode"><a href="#iOS开发——Xcode" class="headerlink" title="iOS开发——Xcode"></a>iOS开发——Xcode</h4><h5 id="Xcode插件"><a href="#Xcode插件" class="headerlink" title="Xcode插件"></a>Xcode插件</h5><ol>
+<li><p><a href="http://alcatraz.io/" target="_blank" rel="noopener">Alcatraz</a><br>  Alcatraz是Xcode中开源的包管理工具插件，可以让我们更轻松地管理各种插件，比如查找、安装、删除别的插件、模板、颜色主体，而不需要手动将插件文件复制到Xcode的插件目录下，Alcatraz帮我们做这项工作。<br> <img src="/articleImages/2015-09-10-Alcatraz.png" alt=""></p>
+</li>
+<li><p><a href="https://github.com/FuzzyAutocomplete/FuzzyAutocompletePlugin" target="_blank" rel="noopener">FuzzyAutoComplete</a><br>  Xcode本身自带智能提示补全代码功能，但是前提是你得记得正确的方法头，比如<code>-(void)tableView:(UITableView *)tableView cell</code>才能匹配出方法，但是使用该插件，你只需要输入诸如<code>-cellFor</code>就可以匹配出来，模糊匹配非常强大。<br> <img src="/articleImages/2015-09-10-FuzzyAutoComplete.gif" alt=""></p>
+</li>
+<li><p><a href="https://github.com/ksuther/KSImageNamed-Xcode" target="_blank" rel="noopener">KSImageNamed</a><br>  KSImageNamed插件会自动弹出图片名称列表以供选择，并且显示缩略图，让我们能够方便地查看资源文件夹以查找合适的图片名称。<br>  顺便说下，这个插件貌似用Alcatraz无法安装。如果你也同样碰到Alcatraz安装此插件失败的问题，那么可以按照它的github页说明的那样，将项目下载下来build，再重启Xcode就可以了。<br> <img src="/articleImages/2015-09-10-KSImageNamed.gif" alt=""></p>
+</li>
+<li><p><a href="https://github.com/onevcat/VVDocumenter-Xcode" target="_blank" rel="noopener">VVDocumenter-Xcode</a><br> VVDocumenter-Xcode是<a href="http://onev.cat/" target="_blank" rel="noopener">猫神</a>出品，可以让你方便地添加Java doc风格的注释。<br> <img src="/articleImages/2015-09-10-VVDocumenter-Xcode.gif" alt="">  </p>
+</li>
+<li><p><a href="https://github.com/stefanceriu/SCXcodeSwitchExpander" target="_blank" rel="noopener">SCXodeSwitchExpander</a><br> 虽然Xcode自带的智能提示功能清楚地列出了Switch语句每种情况下应该处理的方式，但是一个个填入枚举值仍然很繁琐。SCXodeSwitchExpander插件正是为此而生，它可以自动获得所有的枚举值并填入相应的位置，而我们只需要处理每个枚举值下面对应的逻辑即可。<br> <img src="/articleImages/2015-09-10-SCXodeSwitchExpander.gif" alt=""></p>
+</li>
+<li><p><a href="https://github.com/rickytan/RTImageAssets" target="_blank" rel="noopener">RTImageAssets</a><br> 该插件用来生成 @3x 的图片资源对应的 @2x 和 @1x 版本，只要拖拽高清图到 @3x 的位置上，然后按 Ctrl+Shift+A 即可自动生成两张低清的补全空位。当然你也可以从 @2x 的图生成 @3x 版本，如果你对图片质量要求不高的话。<br> <img src="/articleImages/2015-09-10-RTImageAssets.gif" alt=""></p>
+</li>
+</ol>
+<h4 id="iOS界面调试——Reveal"><a href="#iOS界面调试——Reveal" class="headerlink" title="iOS界面调试——Reveal"></a>iOS界面调试——Reveal</h4><h4 id="Java开发——Eclipse"><a href="#Java开发——Eclipse" class="headerlink" title="Java开发——Eclipse"></a>Java开发——Eclipse</h4><h4 id="前端开发——Brackets、SublimeText"><a href="#前端开发——Brackets、SublimeText" class="headerlink" title="前端开发——Brackets、SublimeText"></a>前端开发——Brackets、SublimeText</h4><h4 id="建模工具——StarUML"><a href="#建模工具——StarUML" class="headerlink" title="建模工具——StarUML"></a>建模工具——<a href="http://staruml.io/" target="_blank" rel="noopener">StarUML</a></h4><h4 id="设计工具-Sketch、Sketch-ToolBox"><a href="#设计工具-Sketch、Sketch-ToolBox" class="headerlink" title="设计工具-Sketch、Sketch ToolBox"></a>设计工具-<a href="http://www.sketchapp.com/" target="_blank" rel="noopener">Sketch</a>、Sketch ToolBox</h4><h3 id="效率工具"><a href="#效率工具" class="headerlink" title="效率工具"></a><strong>效率工具</strong></h3><h4 id="效率启动器——Alfred"><a href="#效率启动器——Alfred" class="headerlink" title="效率启动器——Alfred"></a>效率启动器——Alfred</h4><p><img src="/articleImages/2016-06-22-Alfred.jpg" alt=""></p>
+<h4 id="Dash"><a href="#Dash" class="headerlink" title="Dash"></a>Dash</h4><h4 id="思维导图——XMind"><a href="#思维导图——XMind" class="headerlink" title="思维导图——XMind"></a>思维导图——XMind</h4><h4 id="管理论文——Papers"><a href="#管理论文——Papers" class="headerlink" title="管理论文——Papers"></a>管理论文——Papers</h4><h4 id="记笔记——印象笔记"><a href="#记笔记——印象笔记" class="headerlink" title="记笔记——印象笔记"></a>记笔记——印象笔记</h4><h4 id="文件差异比较软件——Beyond-Compare"><a href="#文件差异比较软件——Beyond-Compare" class="headerlink" title="文件差异比较软件——Beyond Compare"></a>文件差异比较软件——Beyond Compare</h4><h4 id="Markdown编辑器——Mou、Ulysses、StoryWriter"><a href="#Markdown编辑器——Mou、Ulysses、StoryWriter" class="headerlink" title="Markdown编辑器——Mou、Ulysses、StoryWriter"></a>Markdown编辑器——Mou、Ulysses、StoryWriter</h4><h4 id="稍后阅读——Pocket"><a href="#稍后阅读——Pocket" class="headerlink" title="稍后阅读——Pocket"></a>稍后阅读——Pocket</h4><h4 id="其他格式转Kindle支持格式——Calibre"><a href="#其他格式转Kindle支持格式——Calibre" class="headerlink" title="其他格式转Kindle支持格式——Calibre"></a>其他格式转Kindle支持格式——Calibre</h4><h4 id="录屏软件——LiceCap、ScreenFlow"><a href="#录屏软件——LiceCap、ScreenFlow" class="headerlink" title="录屏软件——LiceCap、ScreenFlow"></a>录屏软件——LiceCap、ScreenFlow</h4><h4 id="视频转GIF——GIFBrewery"><a href="#视频转GIF——GIFBrewery" class="headerlink" title="视频转GIF——GIFBrewery"></a>视频转GIF——GIFBrewery</h4><h3 id="娱乐工具"><a href="#娱乐工具" class="headerlink" title="娱乐工具"></a><strong>娱乐工具</strong></h3><h4 id="听音乐——网易云音乐"><a href="#听音乐——网易云音乐" class="headerlink" title="听音乐——网易云音乐"></a>听音乐——网易云音乐</h4><h4 id="视频播放器——MPlayerX"><a href="#视频播放器——MPlayerX" class="headerlink" title="视频播放器——MPlayerX"></a>视频播放器——MPlayerX</h4>
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/工具软件/">工具软件</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/Mac/">Mac</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/2015/09/10/2015-09-10-Mac下的常用app-持续更新/#comments" class="ds-thread-count comments-count-link" data-thread-key="2015/09/10/2015-09-10-Mac下的常用app-持续更新/" data-count-type="comments">&nbsp;</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2015/08/19/2015-08-19-整理StackOverflow上iOS项目开发的常见问题/" title="整理StackOverflow上iOS项目开发的常见问题（持续更新...）" itemprop="url">整理StackOverflow上iOS项目开发的常见问题（持续更新...）</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="AlfyYan" target="_blank" itemprop="author">AlfyYan</a>
+		
+  <p class="article-time">
+    <time datetime="2015-08-19T03:26:02.000Z" itemprop="datePublished"> 发表于 2015-08-19</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a><strong>前言</strong></h2><p>　一直以来，就有把平时开发中常见的错误汇总出来的想法，毕竟“好记性不如烂笔头”，有些问题虽然曾经遇到过，当时也解决了，但是下次再遇到时难免又会不记得如何解决，再次去search找solution，不免很浪费时间。本篇文章中我将当时初入门iOS开发中的一些基础知识点和我个人在实际iOS项目中遇到的问题总结出来，就当理理自己的笔记啦~~</p>
+<h2 id="基础知识点"><a href="#基础知识点" class="headerlink" title="基础知识点"></a><strong>基础知识点</strong></h2><h3 id="The-purpose-of-using-IBOutlet-and-IBAction"><a href="#The-purpose-of-using-IBOutlet-and-IBAction" class="headerlink" title="The purpose of using IBOutlet and IBAction"></a><a href="http://stackoverflow.com/questions/1643007/iboutlet-and-ibaction" target="_blank" rel="noopener">The purpose of using IBOutlet and IBAction</a></h3><p>IBOutlet和IBAction本质是Apple定义的宏，用来指代Interface Builder文件构建的界面上的变量和方法。比如界面上有一个<code>UILabel</code>控件，但是在xib对应的类文件中，你想动态改变这个label的文本，那就需要在类文件中引用界面上的这个label，<code>IBOutlet</code>的作用就是将两者连接起来，让其建立联系。</p>
+<pre><code>@property (nonatomatic, weak) IBOutlet UILabel *label;
+</code></pre><h3 id="What-is-a-typedef-enum-in-Objective-C"><a href="#What-is-a-typedef-enum-in-Objective-C" class="headerlink" title="What is a typedef enum in Objective-C?"></a><a href="http://stackoverflow.com/questions/707512/what-is-a-typedef-enum-in-objective-c" target="_blank" rel="noopener">What is a typedef enum in Objective-C?</a></h3><h3 id="Difference-between-viewDidLoad-and-viewDidAppear"><a href="#Difference-between-viewDidLoad-and-viewDidAppear" class="headerlink" title="Difference between viewDidLoad and viewDidAppear"></a><a href="http://stackoverflow.com/questions/22214843/ios-7-difference-between-viewdidload-and-viewdidappear" target="_blank" rel="noopener">Difference between viewDidLoad and viewDidAppear</a></h3><h2 id="开发中的常见问题"><a href="#开发中的常见问题" class="headerlink" title="开发中的常见问题"></a><strong>开发中的常见问题</strong></h2><h3 id="UIView"><a href="#UIView" class="headerlink" title="UIView"></a><strong>UIView</strong></h3><h4 id="UIView-background-image"><a href="#UIView-background-image" class="headerlink" title="UIView background image"></a><a href="http://stackoverflow.com/questions/9994413/ios-uiview-background-image" target="_blank" rel="noopener">UIView background image</a></h4><p><em>【问题】</em> 给UIView自定义背景图片<br><em>【解决】</em> 在添加图片之前先对图片进行处理下：</p>
+<pre><code>UIGraphicsBeginImageContext(self.view.frame.size);
+[[UIImage imageNamed:@&quot;image.png&quot;] drawInRect:self.view.bounds];
+UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+UIGraphicsEndImageContext();
+
+self.view.backgroundColor = [UIColor colorWithPatternImage:image];
+</code></pre><h3 id="UILabel"><a href="#UILabel" class="headerlink" title="UILabel"></a><strong>UILabel</strong></h3><h4 id="Set-UILabel-line-spacing"><a href="#Set-UILabel-line-spacing" class="headerlink" title="Set UILabel line spacing"></a><a href="http://stackoverflow.com/questions/3880526/set-uilabel-line-spacing" target="_blank" rel="noopener">Set UILabel line spacing</a></h4><h3 id="UIScrollView"><a href="#UIScrollView" class="headerlink" title="UIScrollView"></a><strong>UIScrollView</strong></h3><h4 id="UIScrollView-Scrollable-Content-Size-Ambiguity"><a href="#UIScrollView-Scrollable-Content-Size-Ambiguity" class="headerlink" title="UIScrollView Scrollable Content Size Ambiguity "></a><a href="http://stackoverflow.com/questions/19036228/uiscrollview-scrollable-content-size-ambiguity-xcode-5-ios-7-interface-builder%20" target="_blank" rel="noopener">UIScrollView Scrollable Content Size Ambiguity </a></h4><h3 id="UITableView-amp-amp-UITableViewCell"><a href="#UITableView-amp-amp-UITableViewCell" class="headerlink" title="UITableView &amp;&amp; UITableViewCell"></a><strong>UITableView &amp;&amp; UITableViewCell</strong></h3><h4 id="Illegal-configuration"><a href="#Illegal-configuration" class="headerlink" title="Illegal configuration."></a><a href="http://stackoverflow.com/questions/22783546/illegal-configuration-connection-cell-cannot-have-a-prototype-object-as-its-d" target="_blank" rel="noopener">Illegal configuration.</a></h4><p>　<em>【问题】</em>完整的报错是：Illegal configuration .Connection “cell” can not have a prototype object as its destination。出现这个错误的原因一般都是由于初学者在连接UITableViewCell上的控件时，连接到ViewController文件中去了，如下图：<br><img src="/articleImages/2015-08-19-IllegalConfiguration1.jpg" alt=""><br>　<em>【解决】</em></p>
+<ol>
+<li>新建自定义的Cel类，如CustomCell</li>
+<li>将PrototypeCell设置为自定义类<br> <img src="/articleImages/2015-08-19-IllegalConfiguration2.jpg" alt=""></li>
+<li>将PrototypeCell上的控件与自定义类CustomCell连接。<br> <img src="/articleImages/2015-08-19-IllegalConfiguration3.jpg" alt=""></li>
+</ol>
+<h4 id="Empty-space-before-cells-in-UITableView"><a href="#Empty-space-before-cells-in-UITableView" class="headerlink" title="Empty space before cells in UITableView"></a><a href="http://stackoverflow.com/questions/18906919/remove-empty-space-before-cells-in-uitableview" target="_blank" rel="noopener">Empty space before cells in UITableView</a></h4><h4 id="iOS-8-UITableView-separator-inset-0-not-working"><a href="#iOS-8-UITableView-separator-inset-0-not-working" class="headerlink" title="iOS 8 UITableView separator inset 0 not working"></a><a href="http://stackoverflow.com/questions/25770119/ios-8-uitableview-separator-inset-0-not-working" target="_blank" rel="noopener">iOS 8 UITableView separator inset 0 not working</a></h4><h4 id="Use-didSelectRowAtIndexPath-or-prepareForSegue-method"><a href="#Use-didSelectRowAtIndexPath-or-prepareForSegue-method" class="headerlink" title="Use didSelectRowAtIndexPath or prepareForSegue method"></a><a href="http://stackoverflow.com/questions/8130600/use-didselectrowatindexpath-or-prepareforsegue-method-for-uitableview" target="_blank" rel="noopener">Use didSelectRowAtIndexPath or prepareForSegue method</a></h4><h4 id="prepareForSegue-called-before-didSelectRowAtIndexPath"><a href="#prepareForSegue-called-before-didSelectRowAtIndexPath" class="headerlink" title="prepareForSegue called before didSelectRowAtIndexPath"></a><a href="http://stackoverflow.com/questions/18165684/prepareforsegue-called-before-didselectrowatindexpath-only-when-third-segue-is-a" target="_blank" rel="noopener">prepareForSegue called before didSelectRowAtIndexPath</a></h4><h3 id="UINavigationController"><a href="#UINavigationController" class="headerlink" title="UINavigationController"></a><strong>UINavigationController</strong></h3><h4 id="NSGenericException-Push-segues-can-only-be-used…"><a href="#NSGenericException-Push-segues-can-only-be-used…" class="headerlink" title="NSGenericException, Push segues can only be used…"></a><a href="http://stackoverflow.com/questions/13546122/nsgenericexception-reason-push-segues-can-only-be-used-when-the-source-contr" target="_blank" rel="noopener">NSGenericException, Push segues can only be used…</a></h4><p><em>【问题】</em>完整的报错是：<br>    Terminating app due to uncaught exception ‘NSGenericException’, reason: ‘Push segues can only be used when the source controller is managed by an instance of UINavigationController.<br>时间有点久远，我已经忘了最初是为什麽会犯这个错误了，给新手备用吧o(╯□╰)o。。。</p>
+<p><em>【解决】</em></p>
+<ol>
+<li>选择起始ViewController；</li>
+<li>依次选择Xcode的菜单Editor-> Embed In -> Navigation Controller.<h3 id="UICollectionView-amp-amp-UICollectionViewCell"><a href="#UICollectionView-amp-amp-UICollectionViewCell" class="headerlink" title="UICollectionView &amp;&amp; UICollectionViewCell"></a><strong>UICollectionView &amp;&amp; UICollectionViewCell</strong></h3><h4 id="CellForItemAtIndexPath-is-not-being-called"><a href="#CellForItemAtIndexPath-is-not-being-called" class="headerlink" title="CellForItemAtIndexPath is not being called"></a><a href="http://stackoverflow.com/questions/14668781/uicollectionviews-cellforitematindexpath-is-not-being-called" target="_blank" rel="noopener">CellForItemAtIndexPath is not being called</a></h4><h3 id="UIXXXBar"><a href="#UIXXXBar" class="headerlink" title="UIXXXBar"></a><strong>UIXXXBar</strong></h3><h4 id="iOS7-UISearchBar-overlaps-status-bar-while-searching"><a href="#iOS7-UISearchBar-overlaps-status-bar-while-searching" class="headerlink" title="iOS7 UISearchBar overlaps status bar while searching"></a><a href="http://stackoverflow.com/questions/18925900/ios-7-uisearchdisplaycontroller-search-bar-overlaps-status-bar-while-searching" target="_blank" rel="noopener">iOS7 UISearchBar overlaps status bar while searching</a></h4><h4 id="Auto-Layout-and-“Hide-bottom-bar-when-pushed”"><a href="#Auto-Layout-and-“Hide-bottom-bar-when-pushed”" class="headerlink" title="Auto Layout and “Hide bottom bar when pushed”"></a><a href="http://stackoverflow.com/questions/28724255/auto-layout-and-hide-bottom-bar-when-pushed" target="_blank" rel="noopener">Auto Layout and “Hide bottom bar when pushed”</a></h4><em>【问题】</em> 某项目中主界面是UITabBarController，其中一个列表界面点进去需要隐藏tabbar，里面的界面有个按钮，设置好其autolayout约束后，运行会出现如下问题：<br><img src="/articleImages/2015-08-19-autolayout-hides%20tabbar1.gif" alt=""><br>按钮会弹跳下。。。<br><em>【解决】</em> 改变按钮距底部tabbar的约束：<br><img src="/articleImages/2015-08-19-autolayout-hides%20tabbar2.gif" alt=""></li>
+</ol>
+<h3 id="UIAlertController"><a href="#UIAlertController" class="headerlink" title="UIAlertController"></a><strong>UIAlertController</strong></h3><h4 id="UIAlertController-custom-font-size-color"><a href="#UIAlertController-custom-font-size-color" class="headerlink" title="UIAlertController custom font, size, color"></a><a href="http://stackoverflow.com/questions/26460706/uialertcontroller-custom-font-size-color" target="_blank" rel="noopener">UIAlertController custom font, size, color</a></h4><h3 id="System-API"><a href="#System-API" class="headerlink" title="System API"></a><strong>System API</strong></h3><h4 id="How-to-check-iOS-version"><a href="#How-to-check-iOS-version" class="headerlink" title="How to check iOS version?"></a><a href="http://stackoverflow.com/questions/3339722/how-to-check-ios-version" target="_blank" rel="noopener">How to check iOS version?</a></h4><h4 id="How-to-detect-first-time-app-launch-on-an-iPhone"><a href="#How-to-detect-first-time-app-launch-on-an-iPhone" class="headerlink" title="How to detect first time app launch on an iPhone"></a><a href="http://stackoverflow.com/questions/9964371/how-to-detect-first-time-app-launch-on-an-iphone" target="_blank" rel="noopener">How to detect first time app launch on an iPhone</a></h4><p><em>【问题】</em>检测app是否是第一次启动<br><em>【解决】</em></p>
+<pre><code>- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
+{
+    if(![[NSUserDefaults standardUserDefaults]boolForKey:@&quot;HasLaunchedOnce&quot;])
+    {
+        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@&quot;HasLaunchedOnce&quot;];
+        [[NSUserDefaults standardDefaults] synchronize];
+    }
+}
+</code></pre><h4 id="Unrecognized-selector-sent-to-instance"><a href="#Unrecognized-selector-sent-to-instance" class="headerlink" title="Unrecognized selector sent to instance"></a><a href="http://stackoverflow.com/questions/2455161/unrecognized-selector-sent-to-instance" target="_blank" rel="noopener">Unrecognized selector sent to instance</a></h4><p>这个真的是平时遇到频率比较高的一个错误了</p>
+<h3 id="The-Third-Party-Library"><a href="#The-Third-Party-Library" class="headerlink" title="The Third Party Library"></a><strong>The Third Party Library</strong></h3><h4 id="CocoaPods-arm64-issue"><a href="#CocoaPods-arm64-issue" class="headerlink" title="CocoaPods arm64 issue"></a><a href="http://stackoverflow.com/questions/19419781/cocoapods-arm64-issue" target="_blank" rel="noopener">CocoaPods arm64 issue</a></h4><p><em>【问题】</em>具体遇到的问题可参看我的<a href="http://qingqinghebiancao.github.io/2015/08/10/%E4%BD%BF%E7%94%A8CocoaPods%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98%E6%80%BB%E7%BB%93/" target="_blank" rel="noopener">另一篇博客</a>：<br>    Pods was rejected as an implicit dependency for ‘libPods.a’ because its architectures ‘armv7 armv7s’ didn’t contain all required architectures ‘armv7 armv7s arm64’<br><em>【解决】</em></p>
+<ol>
+<li>选择<code>Pods</code>工程；</li>
+<li>将<code>Build Active Architecture Only</code>由YES设置成NO，然后build工程。</li>
+<li>之后可以再把NO改成原先的YES，也不会再报错了。<br><img src="/articleImages/2015-08-19-CocoaPods%20arm64%20issue.gif" alt=""></li>
+</ol>
+<h4 id="How-to-remove-CocoaPods-From-a-project"><a href="#How-to-remove-CocoaPods-From-a-project" class="headerlink" title="How to remove CocoaPods From a project"></a><a href="http://www.jmeveryday.com/how-to-remove-cocoapods-from-a-project/" target="_blank" rel="noopener">How to remove CocoaPods From a project</a></h4><h4 id="How-to-disable-ARC-for-a-single-file-in-a-project"><a href="#How-to-disable-ARC-for-a-single-file-in-a-project" class="headerlink" title="How to disable ARC for a single file in a project"></a><a href="http://stackoverflow.com/questions/6646052/how-can-i-disable-arc-for-a-single-file-in-a-project#" target="_blank" rel="noopener">How to disable ARC for a single file in a project</a></h4><p><em>【问题】</em>项目开发中通常会用到第三方提供的源代码，但问题是一些比较老的开源项目可能使用的还是非ARC模式，那么我们怎么让ARC和非ARC的源文件同时存在于一个工程中呢？</p>
+<p><em>【解决】</em>Xcode项目中可以使用ARC和非ARC的混合模式。<br>　如果项目中使用的是非ARC模式，则为ARC模式的源文件加入<code>fno-objc-arc</code>标签；如果项目中使用的是ARC模式，则为非ARC模式的源文件加入<code>fobjc-arc</code>标签。<br>添加标签的方法：</p>
+<ol>
+<li>打开：Target->Build Phases->Compile Sources</li>
+<li>双击对应的<em>.m</em>文件</li>
+<li>在弹出窗口中输入上面提到的标签<code>fobjc-arc</code>/<code>fno-objc-arc</code></li>
+<li>点击Done保存<h4 id="Uploading-image-with-AFNetworking-2-0"><a href="#Uploading-image-with-AFNetworking-2-0" class="headerlink" title="Uploading image with AFNetworking 2.0"></a><a href="http://stackoverflow.com/questions/19836432/uploading-image-with-afnetworking-2-0" target="_blank" rel="noopener">Uploading image with AFNetworking 2.0</a></h4></li>
+</ol>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>　俗话说“实践出真知”，很多时候，我们如果纯看书而不自己亲自上手实践，并不知道自己缺少哪些方面的知识，甚至会像“坐井观天”中的那只青蛙一样以为自己知晓天有多大，洋洋自得，这种态度非常不可取尤其在IT行业技术更新迭代速度之快，只会超出我们的想象。个人希望自己在技术方面快速成长，因此我会借这小小一方天地，不断总结自己所学，督促自己！</p>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/iOS开发/">iOS开发</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/StackOverflow/">StackOverflow</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/2015/08/19/2015-08-19-整理StackOverflow上iOS项目开发的常见问题/#comments" class="ds-thread-count comments-count-link" data-thread-key="2015/08/19/2015-08-19-整理StackOverflow上iOS项目开发的常见问题/" data-count-type="comments">&nbsp;</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2015/08/10/2015-08-10-Hexo搭建Github博客踩到的那些坑/" title="Hexo搭建Github博客踩到的那些坑" itemprop="url">Hexo搭建Github博客踩到的那些坑</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="AlfyYan" target="_blank" itemprop="author">AlfyYan</a>
+		
+  <p class="article-time">
+    <time datetime="2015-08-10T06:12:06.000Z" itemprop="datePublished"> 发表于 2015-08-10</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>　Hexo是由Node.js驱动的一款快速、简单且功能强大的博客框架，尽管网上已经有很多文章介绍如何利用Hexo搭建博客，但是我们在实践的过程中仍然会遇到很多问题。谨以本篇文章记录我在使用Hexo搭建博客、写博客遇到的问题。</p>
+<h2 id="1号坑-Hexo安装问题"><a href="#1号坑-Hexo安装问题" class="headerlink" title="1号坑-Hexo安装问题"></a>1号坑-Hexo安装问题</h2><h3 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h3><p>　首先，需要明确，对于mac用户，安装Hexo之前需要install：</p>
+<ul>
+<li><code>Command Line Tools</code></li>
+</ul>
+<p>Xcode安装之后，Xcode->Preferences->Download->Command Line Tools->Install，即可安装。</p>
+<ul>
+<li><code>Node.js</code></li>
+</ul>
+<p>Node.js官网是用pkg安装包安装的，然而<a href="http://blog.teamtreehouse.com/install-node-js-npm-mac" target="_blank" rel="noopener">treehouse的这篇tutorial</a>推荐使用<a href="http://brew.sh/" target="_blank" rel="noopener">Homebrew</a>命令行安装，理由如下：</p>
+<p> （1） 用Homebrew安装不需要给予<code>sudo</code>权限，这样更安全；</p>
+<p> （2） 用安装包安装的话还要将node的可执行路径添加到系统路径(system $path下)，对于熟悉Linux或者Unix的用户，也许很容易，然而对那些对命令行不熟悉的新手来说，这是一个很痛苦的过程，而Homebrew就不需要你去配置系统路径这些。。。</p>
+<p> （3）Homebrew是mac下的开发人员必备安装工具啊！使用安装诸如Git、Ruby等工具都将大大简化，同时卸载这些工具也很方便。</p>
+<ul>
+<li><code>Git</code></li>
+</ul>
+<p>( ⊙ o ⊙ )这步可以省略其实，因为mac自带。</p>
+<p>以上，我确认都安装了，按照Hexo官网指示，执行命令</p>
+<pre><code>npm install -g hexo-cli
+</code></pre><p>转而转啊，等待了N久，结果终于出来了，然而，但是没什么卵用。。。出错了！！</p>
+<pre><code>npm ERR! Darwin 14.4.0
+npm ERR! argv &quot;/usr/local/bin/node&quot; &quot;/usr/local/bin/npm&quot; &quot;install&quot; &quot;-g&quot; &quot;hexo-cli&quot;
+npm ERR! node v0.12.1
+npm ERR! npm v2.5.1
+npm ERR! Attempt to unlock /Users/pokim/npm-global/lib/node\_modules/hexo-cli, which hasn&apos;t been locked
+npm ERR!
+npm ERR! If you need help, you may report this error at:
+npm ERR! \&lt;http: github.com=&quot;&quot; npm=&quot;&quot; npm=&quot;&quot; issues=&quot;&quot;\&gt;
+npm ERR! Please include the following file with any support request:
+npm ERR! /Users/XXXX/npm-debug.log
+</code></pre><h3 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h3><p>　搜索解决问题的过程特别坎坷、痛苦，一开始谷歌关键字“npm error”，第一条<a href="https://cnodejs.org/topic/4f9904f9407edba21468f31e" target="_blank" rel="noopener">使用npm安装一些包失败了的看过来（npm国内镜像介绍)</a>就好像很相关，查看之后意识到可能是国内被墙的关系，于是按照博客上面第一种方法改镜像。</p>
+<pre><code>npm config set registry https://registry.npm.taobao.org
+npm info underscore （如果上面配置正确这个命令会有字符串response）
+</code></pre><p>重新执行安装hexo的命令。。。咕~~(╯﹏╰)b。。。还是不行。。。没办法继续搜索。。。<br>　网上又有说改命令变成</p>
+<pre><code>npm install hexo --no-optional  
+</code></pre><p>但是！！还是没用( ⊙ o ⊙ )啊。。。反复执行好几次仍然出现错误，就在我绝望地要按照<a href="https://cnodejs.org/topic/54da13ca1e6a327207e097c7" target="_blank" rel="noopener">此处</a>同学说的卸载npm重新安装时，最后一遍执行的 <code>nnpm install hexo --no-optional</code>居然显示安装成功了，我现在很可惜没把当时的画面截下来。。。sigh~~</p>
+<p>其实解决的过程稀里糊涂的、莫名其妙的，但是如果后来有同学遇到跟我一样的问题的话，可以把我上面的方法都试试，不过我隐约觉得改镜像是问题得以解决比较关键的一步。</p>
+<h2 id="2号坑-Disqus无法加载，short-name究竟是啥？"><a href="#2号坑-Disqus无法加载，short-name究竟是啥？" class="headerlink" title="2号坑-Disqus无法加载，short_name究竟是啥？"></a>2号坑-Disqus无法加载，short_name究竟是啥？</h2><h3 id="问题描述-1"><a href="#问题描述-1" class="headerlink" title="问题描述"></a>问题描述</h3><p>　当时决定由jekyll转到hexo的原因就是看中了<a href="https://hexo.io/themes/" target="_blank" rel="noopener">Theme list</a>里的jacman主题\&lt;(￣▽￣)> 哇哈哈…（咳咳~~对，我就是颜控。。。）,按照jacman博客中的<a href="http://wuchong.me/2014/11/20/how-to-use-jacman/index.html" target="_blank" rel="noopener">如何使用jacman主题</a>教程,<br>修改themes/jacman下的<code>_config.yml</code>文件，增加disqus评论需要给出short_name，但是找了好久都没搞清楚此short_name是神马。。。</p>
+<pre><code>duoshuo\_shortname:    ## e.g. wuchong   your duoshuo short name.
+disqus\_shortname:     ## e.g. wuchong   your disqus short name.
+</code></pre><h3 id="解决-1"><a href="#解决-1" class="headerlink" title="解决"></a>解决</h3><p>最终，在推酷收集的<a href="http://www.tuicool.com/articles/y6JJV3Z" target="_blank" rel="noopener">这篇文章</a>中才找到。。。</p>
+<p><img src="/articleImages/2015-08-10-DisqusShortName1.png" alt=""><br><img src="/articleImages/2015-08-10-DisqusShortName2.png" alt=""><br><img src="/articleImages/2015-08-10-DisqusShortName3.png" alt=""></p>
+<h2 id="3号坑-图片存储在Github上无法显示问题"><a href="#3号坑-图片存储在Github上无法显示问题" class="headerlink" title="3号坑-图片存储在Github上无法显示问题"></a>3号坑-图片存储在Github上无法显示问题</h2><h3 id="问题描述-2"><a href="#问题描述-2" class="headerlink" title="问题描述"></a>问题描述</h3><p>写到这个问题，现在回想还是一把血泪啊~~~~(>_\&lt;)~~~~<br>众所周知，Markdown插入图片是要给出图片链接，但是图片存放在哪里呢？一开始我并不知道Markdown不仅可以插入网页图片，也可以插入本地图片，无论是相对路径还是绝对路径，所以开始我用的是下面的笨方法：</p>
+<ol>
+<li>在__posts同级目录下新建个文件夹“articleImages”：<br><img src="/articleImages/2015-08-12-InsertImage1.png" alt=""></li>
+<li>在终端执行’hexo d -g’将新做的改动部署到github上，并查看github上图片的链接地址：<br> <a href="https://github.com/qingqinghebiancao/qingqinghebiancao.github.io/blob/master/articleImages/2015-08-10-CocoaPodsErrorFix.png" target="_blank" rel="noopener">https://github.com/qingqinghebiancao/qingqinghebiancao.github.io/blob/master/articleImages/2015-08-10-CocoaPodsErrorFix.png</a></li>
+<li>在Markdown文件中需要插入图片的地方，设置上面的链接：</li>
+</ol>
+<p><img src="https://github.com/qingqinghebiancao/qingqinghebiancao.github.io/blob/master/articleImages/2015-08-10-CocoaPodsErrorFix.png" alt="如图"></p>
+<p>就当我重新<code>hexo g</code>、<code>hexo s</code>并满怀期待地等待结果时，结果却是页面怎么也显示不了图片。。。</p>
+<h3 id="解决-2"><a href="#解决-2" class="headerlink" title="解决"></a>解决</h3><ol>
+<li>如果有同学采用跟我一样的笨方法——将github作为hexo的图片连接源，那么请看<a href="http://pein0119.github.io/2014/08/03/hexo%E4%BD%BF%E7%94%A8github%E4%BD%9C%E4%B8%BA%E5%9B%BE%E7%89%87%E9%93%BE%E6%8E%A5%E6%BA%90/" target="_blank" rel="noopener">这篇博客</a>，即在github的链接后面加上<code>?raw=true</code>：</li>
+</ol>
+<p><img src="https://github.com/qingqinghebiancao/qingqinghebiancao.github.io/blob/master/articleImages/2015-08-10-CocoaPodsErrorFix.png?raw=true" alt="如图"></p>
+<ol>
+<li><p>后来，跟某大神聊到写博客插入图片的这个问题，才知道，Markdown是可以插入本地图片的，针对Hexo，可以在_config.yml文件中设置</p>
+<p> post_asset_folder: true</p>
+</li>
+</ol>
+<p>这样当我们用<code>Hexo new &quot;XX&quot;</code>新建某篇博客时，Hexo会自动为我们在_posts目录下创建一个与文章名相同的文件夹，里面可以用于存放image、css、js文件等。<br><img src="/articleImages/2015-08-12-InsertImage2.png" alt=""></p>
+<p>此时你在Markdown文件里就可以写：</p>
+<p><img src="2015-08-12-test/XX.png" alt="如图"></p>
+<ol>
+<li>既然已经知道Markdown可以插入本地图片，我还是采用自己新建一个Image文件夹，里面专门用来存放图片，但是路径可以改成相对路径：<br><img src="/articleImages/2015-08-12-InsertImage1.png" alt=""></li>
+</ol>
+<pre><code>/articleImages/2015-08-12InsertImage1.png
+</code></pre><p>PS： 这些路径都以Hexo生成后的文件各路径为准。。。<br><img src="/articleImages/2015-08-12-InsertImage3.png" alt=""></p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>　每次接触新东西开始总是很痛苦，Hexo这个我就折腾了大约2天，以后我会多多写博客，让新手都少走点弯路，也让自己记住这些走过的弯路。</p>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ol>
+<li><a href="http://cnfeat.com/blog/2014/05/10/how-to-build-a-blog/" target="_blank" rel="noopener">如何搭建一个独立博客-Github Pages与Hexo教程</a></li>
+<li><a href="http://blog.teamtreehouse.com/install-node-js-npm-mac" target="_blank" rel="noopener">How to Install Node.js and NPM on a Mac</a></li>
+<li><a href="http://hexo.io/zh-cn/docs/" target="_blank" rel="noopener">Hexo文档</a></li>
+<li><a href="http://wuchong.me/blog/2014/11/20/how-to-use-jacman/" target="_blank" rel="noopener">如何使用Jacman主题</a></li>
+<li><a href="http://pein0119.github.io/2014/08/03/hexo%E4%BD%BF%E7%94%A8github%E4%BD%9C%E4%B8%BA%E5%9B%BE%E7%89%87%E9%93%BE%E6%8E%A5%E6%BA%90/" target="_blank" rel="noopener">hexo使用github作为图片链接源</a></li>
+<li><a href="http://timnew.me/blog/2014/08/19/use-hexo-asset-folder-to-manage-resource-used-by-post/" target="_blank" rel="noopener">Use Hexo Asset Folder to manage resource used by post</a></li>
+</ol>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/博客/">博客</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/Hexo/">Hexo</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/2015/08/10/2015-08-10-Hexo搭建Github博客踩到的那些坑/#comments" class="ds-thread-count comments-count-link" data-thread-key="2015/08/10/2015-08-10-Hexo搭建Github博客踩到的那些坑/" data-count-type="comments">&nbsp;</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2015/08/10/2015-08-10-使用CocoaPods遇到的问题总结/" title="使用CocoaPods遇到的问题总结" itemprop="url">使用CocoaPods遇到的问题总结</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="AlfyYan" target="_blank" itemprop="author">AlfyYan</a>
+		
+  <p class="article-time">
+    <time datetime="2015-08-10T01:54:40.000Z" itemprop="datePublished"> 发表于 2015-08-10</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h3 id="一次遇到的三个问题"><a href="#一次遇到的三个问题" class="headerlink" title="一次遇到的三个问题"></a>一次遇到的三个问题</h3><h4 id="Question-One"><a href="#Question-One" class="headerlink" title="Question One"></a>Question One</h4><pre><code>diff: /../Podfile.lock: No such file or directory
+diff: /Manifest.lock: No such file or directory
+error: The sandbox is not in sync with the Podfile.lock. Run &apos;pod install&apos; or update your CocoaPods installation.
+</code></pre><h4 id="Question-Two"><a href="#Question-Two" class="headerlink" title="Question Two"></a>Question Two</h4><pre><code>ld: library not found for -IQKeyboardManager 
+</code></pre><h4 id="Question-Three"><a href="#Question-Three" class="headerlink" title="Question Three"></a>Question Three</h4><pre><code>Pods was rejected as an implicit dependency for &apos;libPods.a&apos; because its architectures &apos;XXX&apos; didn&apos;t contain all required architectures
+</code></pre><p>　第二天要面试，想给面试官展示曾经做过的项目，于是把项目打开运行，编译却没通过，遇到第1个问题，但还好错误说明中给出了如何解决的方法——Run ‘pod install’ or update your CocoaPods installation. 关闭项目执行”pod install”。PS：此处说个小技巧，通常我们在运行”pod install/update”命令的时候会很慢,原因在于执行这两个命令的时候会升级CocoaPods的spec仓库，加个参数就会少执行这一步，速度也会相应提升：<br>    pod install –verbose –no-repo-update<br>    pod update –verbose –no-repo-update </p>
+<p>　上述命令执行完之后，再次编译运行，哇咔咔。。。仍然是buil    d failed o (╯□╰)o，但是这次error原因变了，变成第2、3个    错误了，谷歌<code>ld: library not found for - IQKeyboardManager</code>,网上有很多关于<code>ld: library not found for...</code>错误的解决方案，比如<a href="http://blog.csdn.net/ioswyl88219/article/details/21455573" target="_blank" rel="noopener">此处</a>，但是我的所有第三方库都是用CocoaPods管理的，应当与链接引用没关系，搜寻各处无果。。。重新再返回xcode查看错误时，发现还有一个隐晦的warning，即上述第3个问题，(⊙o⊙)…貌似libPods.a库有问题啊，再去找谷歌，并间接寻到了万能的stackoverflow上——就是<a href="http://stackoverflow.com/questions/19419781/cocoapods-arm64-issue" target="_blank" rel="noopener">这儿</a>，按照上面所说去修改项目，build——>run——>泪奔~~o(>_\&lt;)o ~~讨厌的红色叉叉终于没了。。。<br>　<img src="https://github.com/qingqinghebiancao/qingqinghebiancao.github.io/blob/master/articleImages/2015-08-10-CocoaPodsErrorFix.png?raw=true" alt="如图所示" title="FixCocoaPodsError">
+　</p>
+<h3 id="15-11-3遇到的问题"><a href="#15-11-3遇到的问题" class="headerlink" title="15-11-3遇到的问题"></a>15-11-3遇到的问题</h3><h4 id="CocoaPods国内淘宝镜像失效"><a href="#CocoaPods国内淘宝镜像失效" class="headerlink" title="CocoaPods国内淘宝镜像失效"></a>CocoaPods国内淘宝镜像失效</h4><p>　今天在运行<code>pod install</code>命令的时候，突然出现<code>command not found</code>，自己非常确定之前已经安装过，但是既然它提示了，那么就重装一遍吧。但是执行<code>sudo gem install cocoapods</code>时又报错了：</p>
+<pre><code>ERROR:  Could not find a valid gem &apos;cocoapods&apos; (&gt;= 0), here is why:
+   Unable to download data from http://ruby.taobao.org - bad response Not Found 404 (http://ruby.taobao.org/latest_specs.4.8.gz)
+</code></pre><p>“not found 404”很明显是淘宝镜像失效了，而且现在使用的VPN命令行里也可以翻墙，所以决定删除原淘宝镜像(<a href="http://ruby.taobao.org)，" target="_blank" rel="noopener">http://ruby.taobao.org)，</a> 重新添加原来镜像地址(<a href="https://rubygems.org)。" target="_blank" rel="noopener">https://rubygems.org)。</a> 按照当初<a href="http://code4app.com/article/cocoapods-install-usage" target="_blank" rel="noopener">装CocoaPods的教程</a>, 可以知道删除镜像和添加镜像的方法分别如下:</p>
+<pre><code>gem sources —-remove http://ruby.taobao.org/
+gem sources -a https://rubygems.org
+</code></pre><p>但是执行<code>gem remove</code>命令时，却出现如下错误：</p>
+<pre><code>source http://ruby.taobao.org/ not present in cache
+</code></pre><p>一直删除不掉这个淘宝镜像，最终搜索了下，在SegmentFault上找到答案，竟然是一个”/”的问题：</p>
+<pre><code>gem sources —-remove http://ruby.taobao.org
+</code></pre><p>😥 😥 😥 😥!!<br>　另外镜像失效的原因是淘宝把原先的http协议镜像改为https协议镜像，所以只要将镜像地址更新为”<a href="https://ruby.taobao.org”就好了。" target="_blank" rel="noopener">https://ruby.taobao.org”就好了。</a></p>
+<h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h3><p>（1）<a href="http://blog.csdn.net/ioswyl88219/article/details/21455573" target="_blank" rel="noopener">ld: library not found for…</a><br>（2） <a href="http://stackoverflow.com/questions/27388957/pods-was-rejected-as-an-implicit-dependency-for-libpods-a-because-its-architec" target="_blank" rel="noopener">Pods was rejected as an implicit dependency for ‘libPods.a’</a><br>（3）<a href="http://stackoverflow.com/questions/19419781/cocoapods-arm64-issue" target="_blank" rel="noopener">CocoaPods arm64 issue</a><br>（4）<a href="http://segmentfault.com/q/1010000000579837" target="_blank" rel="noopener">无法删除ruby默认源</a><br>（5）<a href="http://www.jianshu.com/p/0f8b0d26e31f" target="_blank" rel="noopener">CocoaPods问题</a></p>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/iOS开发/">iOS开发</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/CocoaPods/">CocoaPods</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/2015/08/10/2015-08-10-使用CocoaPods遇到的问题总结/#comments" class="ds-thread-count comments-count-link" data-thread-key="2015/08/10/2015-08-10-使用CocoaPods遇到的问题总结/" data-count-type="comments">&nbsp;</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+
+</div>
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  
+<div class="github-card">
+<p class="asidetitle">Github 名片</p>
+<div class="github-card" data-github="AlfyYan" data-theme="medium"></div>
+<script type="text/javascript" src="//cdn.jsdelivr.net/github-cards/latest/widget.js" ></script>
+</div>
+
+
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">分类</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/iOS开发/" title="iOS开发">iOS开发<sup>4</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/博客/" title="博客">博客<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/工具软件/" title="工具软件">工具软件<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/生活/" title="生活">生活<sup>1</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">标签</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/CocoaPods/" title="CocoaPods">CocoaPods<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Hexo/" title="Hexo">Hexo<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/StackOverflow/" title="StackOverflow">StackOverflow<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Mac/" title="Mac">Mac<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Unity3D-iOS开发/" title="Unity3D, iOS开发">Unity3D, iOS开发<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/生活/" title="生活">生活<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">友情链接</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="http://www.raywenderlich.com" target="_blank" title="Raywenderlich">Raywenderlich</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://www.appcoda.com" target="_blank" title="AppCoda">AppCoda</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://objccn.io/" target="_blank" title="Objc中国">Objc中国</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="https://blog.ibireme.com/" target="_blank" title="一只魔法师的工坊">一只魔法师的工坊</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="https://github.com/ipader/SwiftGuide" target="_blank" title="SwiftGuide-Github">SwiftGuide-Github</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="https://www.hackingwithswift.com/" target="_blank" title="HackingSwift">HackingSwift</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://www.cocoachina.com" target="_blank" title="CocoaChina">CocoaChina</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://code4app.com" target="_blank" title="Code4App">Code4App</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="https://www.cocoacontrols.com/" target="_blank" title="CocoaControls">CocoaControls</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> 平生知心者，屈指能几人？ <br/>
+			以文会友，以友辅仁</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		
+		<a href="https://github.com/AlfyYan" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		<a href="http://stackoverflow.com/users/4799498" target="_blank" class="icon-stack-overflow" title="stackoverflow"></a>
+		
+		
+		
+		
+		
+		
+		
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2018 
+		
+		<a href="/about" target="_blank" title="AlfyYan">AlfyYan</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?e6d1f421bbc9962127a50488f9ed37d1";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+ </html>
