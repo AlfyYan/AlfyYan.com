@@ -733,28 +733,25 @@ disqus\_shortname:     ## e.g. wuchong   your disqus short name.
 <h2 id="3号坑-图片存储在Github上无法显示问题"><a href="#3号坑-图片存储在Github上无法显示问题" class="headerlink" title="3号坑-图片存储在Github上无法显示问题"></a>3号坑-图片存储在Github上无法显示问题</h2><h3 id="问题描述-2"><a href="#问题描述-2" class="headerlink" title="问题描述"></a>问题描述</h3><p>写到这个问题，现在回想还是一把血泪啊~~~~(>_\&lt;)~~~~<br>众所周知，Markdown插入图片是要给出图片链接，但是图片存放在哪里呢？一开始我并不知道Markdown不仅可以插入网页图片，也可以插入本地图片，无论是相对路径还是绝对路径，所以开始我用的是下面的笨方法：</p>
 <ol>
 <li>在__posts同级目录下新建个文件夹“articleImages”：<br><img src="/articleImages/2015-08-12-InsertImage1.png" alt=""></li>
-<li>在终端执行’hexo d -g’将新做的改动部署到github上，并查看github上图片的链接地址：<br> <a href="https://github.com/qingqinghebiancao/qingqinghebiancao.github.io/blob/master/articleImages/2015-08-10-CocoaPodsErrorFix.png" target="_blank" rel="noopener">https://github.com/qingqinghebiancao/qingqinghebiancao.github.io/blob/master/articleImages/2015-08-10-CocoaPodsErrorFix.png</a></li>
+<li>在终端执行’hexo d -g’将新做的改动部署到github上，并查看github上图片的链接地址：<br> <a href="https://github.com/AlfyYan/AlfyYan.github.io/blob/master/articleImages/2015-08-10-CocoaPodsErrorFix.png" target="_blank" rel="noopener">https://github.com/AlfyYan/AlfyYan.github.io/blob/master/articleImages/2015-08-10-CocoaPodsErrorFix.png</a></li>
 <li>在Markdown文件中需要插入图片的地方，设置上面的链接：</li>
 </ol>
-<p><img src="https://github.com/qingqinghebiancao/qingqinghebiancao.github.io/blob/master/articleImages/2015-08-10-CocoaPodsErrorFix.png" alt="如图"></p>
+<p><img src="https://github.com/AlfyYan/AlfyYan.github.io/blob/master/articleImages/2015-08-10-CocoaPodsErrorFix.png" alt="如图"></p>
 <p>就当我重新<code>hexo g</code>、<code>hexo s</code>并满怀期待地等待结果时，结果却是页面怎么也显示不了图片。。。</p>
 <h3 id="解决-2"><a href="#解决-2" class="headerlink" title="解决"></a>解决</h3><ol>
 <li>如果有同学采用跟我一样的笨方法——将github作为hexo的图片连接源，那么请看<a href="http://pein0119.github.io/2014/08/03/hexo%E4%BD%BF%E7%94%A8github%E4%BD%9C%E4%B8%BA%E5%9B%BE%E7%89%87%E9%93%BE%E6%8E%A5%E6%BA%90/" target="_blank" rel="noopener">这篇博客</a>，即在github的链接后面加上<code>?raw=true</code>：</li>
 </ol>
-<p><img src="https://github.com/qingqinghebiancao/qingqinghebiancao.github.io/blob/master/articleImages/2015-08-10-CocoaPodsErrorFix.png?raw=true" alt="如图"></p>
+<p><img src="https://github.com/AlfyYan/AlfyYan.github.io/blob/master/articleImages/2015-08-10-CocoaPodsErrorFix.png?raw=true" alt="如图"></p>
 <ol>
-<li><p>后来，跟某大神聊到写博客插入图片的这个问题，才知道，Markdown是可以插入本地图片的，针对Hexo，可以在_config.yml文件中设置</p>
-<p> post_asset_folder: true</p>
-</li>
+<li>后来，跟某大神聊到写博客插入图片的这个问题，才知道，Markdown是可以插入本地图片的，针对Hexo，可以在_config.yml文件中设置<code>post\_asset\_folder: true</code>, 这样当我们用<code>Hexo new &quot;XX&quot;</code>新建某篇博客时，Hexo会自动为我们在_posts目录下创建一个与文章名相同的文件夹，里面可以用于存放image、css、js文件等。<br><img src="/articleImages/2015-08-12-InsertImage2.png" alt=""></li>
 </ol>
-<p>这样当我们用<code>Hexo new &quot;XX&quot;</code>新建某篇博客时，Hexo会自动为我们在_posts目录下创建一个与文章名相同的文件夹，里面可以用于存放image、css、js文件等。<br><img src="/articleImages/2015-08-12-InsertImage2.png" alt=""></p>
 <p>此时你在Markdown文件里就可以写：</p>
 <p><img src="2015-08-12-test/XX.png" alt="如图"></p>
 <ol>
 <li>既然已经知道Markdown可以插入本地图片，我还是采用自己新建一个Image文件夹，里面专门用来存放图片，但是路径可以改成相对路径：<br><img src="/articleImages/2015-08-12-InsertImage1.png" alt=""></li>
 </ol>
 <pre><code>/articleImages/2015-08-12InsertImage1.png
-</code></pre><p>PS： 这些路径都以Hexo生成后的文件各路径为准。。。<br><img src="/articleImages/2015-08-12-InsertImage3.png" alt=""></p>
+</code></pre><p>PS： 这些路径都以Hexo生成后的文件各路径为准。。。</p>
 <h2 id="4号坑-迁移博客时无法部署到GitHub上"><a href="#4号坑-迁移博客时无法部署到GitHub上" class="headerlink" title="4号坑-迁移博客时无法部署到GitHub上"></a>4号坑-迁移博客时无法部署到GitHub上</h2><h3 id="问题描述-3"><a href="#问题描述-3" class="headerlink" title="问题描述"></a>问题描述</h3><p>最近由于各种原因不想使用原先的GitHub账号了，所以就考虑把以前账号的一些文章迁移到新的账号下，在所有配置完成后，执行部署命令时：<code>hexo d -g</code>，却出现类似下面的错误：</p>
 <pre><code><figure class="highlight vbnet"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">remote: Permission <span class="keyword">to</span> naihe138/naihe138.github.io.git denied <span class="keyword">to</span> blueSky1115.</span><br><span class="line">fatal: unable <span class="keyword">to</span> access <span class="comment">'https://github.com/naihe138/naihe138.github.io.git/': The requested URL returned error: 403</span></span><br><span class="line">FATAL Something<span class="comment">'s wrong. Maybe you can find the solution here: http://hexo.io/docs/troubleshooting.html</span></span><br><span class="line"><span class="keyword">Error</span>: remote: Permission <span class="keyword">to</span> naihe138/naihe138.github.io.git denied <span class="keyword">to</span> blueSky1115.</span><br><span class="line">fatal: unable <span class="keyword">to</span> access <span class="comment">'https://github.com/naihe138/naihe138.github.io.git/': The requested URL returned error: 403</span></span><br><span class="line"></span><br><span class="line">   at ChildProcess.&lt;anonymous&gt; (/Users/naihe/naihe138.github.io/node_modules/hexo-util/<span class="keyword">lib</span>/spawn.js:<span class="number">37</span>:<span class="number">17</span>)</span><br><span class="line">   at emitTwo (events.js:<span class="number">87</span>:<span class="number">13</span>)</span><br><span class="line">   at ChildProcess.emit (events.js:<span class="number">172</span>:<span class="number">7</span>)</span><br><span class="line">   at maybeClose (internal/child_process.js:<span class="number">827</span>:<span class="number">16</span>)</span><br><span class="line">   at Socket.&lt;anonymous&gt; (internal/child_process.js:<span class="number">319</span>:<span class="number">11</span>)</span><br><span class="line">   at emitOne (events.js:<span class="number">77</span>:<span class="number">13</span>)</span><br><span class="line">   at Socket.emit (events.js:<span class="number">169</span>:<span class="number">7</span>)</span><br><span class="line">   at Pipe._onclose (net.js:<span class="number">477</span>:<span class="number">12</span>)</span><br></pre></td></tr></table></figure>
 </code></pre><h3 id="解决-3"><a href="#解决-3" class="headerlink" title="解决"></a>解决</h3><p>Google了很久，网上很多说将<code>_config.yml</code>中的<code>repository</code>配置改成<code>ssh</code>，而非<code>https</code>的配置方式，然而并没有解决我的问题，后来仔细想了下被denied的用户名是我旧的GitHub账号的用户名，这个旧的用户名究竟存在哪里呢？答案是钥匙串（KeyChain Access）。打开钥匙串将<code>密码</code>选项下的<code>github.com</code>删掉，返回terminal重新执行部署命令，会提示输入GitHub账号的用户名和密码，输入正确之后就部署成功了。</p>
